@@ -29,7 +29,7 @@ const columns = [
 export const CartList = () => {
 	// const { cart: products } = useCartContext()
 
-	const products = [
+	const products: ProductInCard[] = [
 		{
 			id: 2,
 			title: "Strong Lemon",
@@ -39,6 +39,7 @@ export const CartList = () => {
 			thumbnail: "/productos/tabaco/zomo-stronglemon.jpeg",
 			price: 2300,
 			isAvailable: true,
+			quantity: 1,
 		},
 		{
 			id: 3,
@@ -49,6 +50,7 @@ export const CartList = () => {
 			thumbnail: "/productos/tabaco/adalya-lemonpie.jpeg",
 			price: 2300,
 			isAvailable: true,
+			quantity: 4,
 		},
 		{
 			id: 4,
@@ -59,12 +61,13 @@ export const CartList = () => {
 			thumbnail: "/productos/tabaco/bluehorse-bakunights.jpeg",
 			price: 2300,
 			isAvailable: true,
+			quantity: 2,
 		},
 	]
 
 	const renderCell = React.useCallback(
-		// (prod: ProductInCard, columnKey: string | number) => {
 		(prod: ProductInCard, columnKey: string | number) => {
+		// (prod, columnKey: string | number) => {
 			const cellValue = prod[columnKey as number]
 
 			switch (columnKey) {
