@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react"
 
 const getItem = async () => {
 	try {
-		const res = await fetch("http://localhost:3000/api/hello")
+		const res = await fetch("/api/hello")
 		const data = await res.json()
 		return data
 	} catch (error) {

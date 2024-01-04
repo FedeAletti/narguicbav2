@@ -4,7 +4,7 @@ import { Product } from "@/types"
 import { Breadcrumbs, BreadcrumbItem, Skeleton, Card } from "@nextui-org/react"
 
 const getProds = async (): Promise<Product[]> => {
-	const res = await fetch("http://localhost:3000/api/hello")
+	const res = await fetch("/api/hello")
 	const data = (await res.json()) as Product[]
 	return data
 }
