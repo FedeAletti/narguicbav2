@@ -40,6 +40,7 @@ export const CartList = () => {
 			price: 2300,
 			isAvailable: true,
 			quantity: 1,
+			brandColor: "red-600",
 		},
 		{
 			id: 3,
@@ -62,6 +63,7 @@ export const CartList = () => {
 			price: 2300,
 			isAvailable: true,
 			quantity: 2,
+			brandColor: "red-600",
 		},
 	]
 
