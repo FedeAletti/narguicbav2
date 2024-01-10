@@ -3,7 +3,7 @@ import { useCartContext } from "@/context/CartContext"
 import { useProductsContext } from "@/context/ProductsContext"
 import { Product } from "@/types"
 import { Button } from "@nextui-org/react"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 type Props = {
 	stock: number
@@ -12,32 +12,26 @@ type Props = {
 	qty?: number
 }
 
-export const ItemCount = ({ stock, onAdd, id, qty = 0 }: Props) => {
+export const ItemCount = ({ stock, onAdd, id, qty = 1 }: Props) => {
 	const [count, setCount] = useState(qty)
 
-	const { addToCart } = useCartContext()
-	const products = useProductsContext() as Product[]
-	const handleClick = (id: number, cantidad: number, action: string) => {
-		// const findProduct = products.find((producto) => producto.id === id)
-
-		// if (!findProduct) {
-		// 	alert("Error en la base de datos")
-		// 	return
-		// }
-
-		if (action === "remove") {
-			if (count > 1) {
-				setCount(count - 1)
-			}
-		} else if (action === "add") {
-			if (count < stock) {
-				setCount(count + 1)
-			}
+	const handleRemove = () => {
+		if (count > 1) {
+			onAdd(count - 1)
+			setCount(count - 1)
 		}
-
-		// addToCart(findProduct, cantidad)
-		onAdd(count)
 	}
+
+	const handleAdd = () => {
+		if (count < stock) {
+			onAdd(count + 1)
+			setCount(count + 1)
+		}
+	}
+
+	useEffect(() => {
+		setCount(qty)
+	}, [qty])
 
 	return (
 		<div className="flex items-center justify-between gap-5 py-2 rounded-3xl bg-slate-200 px-2">
@@ -47,7 +41,7 @@ export const ItemCount = ({ stock, onAdd, id, qty = 0 }: Props) => {
 				isIconOnly
 				className="rounded-full text-tiny"
 				aria-label="remove item"
-				onClick={() => handleClick(id, count, "remove")}>
+				onClick={handleRemove}>
 				<MinusIcon />
 			</Button>
 			<h6 className="text-lg font-bold">{count}</h6>
@@ -57,7 +51,7 @@ export const ItemCount = ({ stock, onAdd, id, qty = 0 }: Props) => {
 				isIconOnly
 				className="rounded-full text-tiny"
 				aria-label="add item"
-				onClick={() => handleClick(id, count, "add")}>
+				onClick={handleAdd}>
 				<PlusIcon />
 			</Button>
 		</div>

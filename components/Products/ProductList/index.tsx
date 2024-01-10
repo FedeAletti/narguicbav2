@@ -87,8 +87,8 @@ export const ProductList = () => {
 				initial="hidden"
 				animate="visible"
 				className="flex flex-wrap items-center justify-center px-5">
-				{products.map((item, index) => (
-					<ProductCard key={index} item={item} />
+				{products.map((item) => (
+					<ProductCard key={item.id} item={item} />
 				))}
 			</motion.article>
 		</div>

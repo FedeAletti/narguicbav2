@@ -20,7 +20,7 @@ const CartContextProvider = ({ children }) => {
 		if (productoIsInCart) {
 			newCart[
 				newCart.findIndex((prod) => prod.id === productoIsInCart.id)
-			].quantity += cantidad
+			].quantity = cantidad
 
 			setCart(newCart)
 			return
@@ -45,8 +45,6 @@ const CartContextProvider = ({ children }) => {
 	}
 
 	const deleteCart = () => setCart([])
-
-	console.log(cart)
 
 	return (
 		<CartContext.Provider

@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import "@/styles/globals.css"
 import ProductsContextProvider from "@/context/ProductsContext"
 import CartContextProvider from "@/context/CartContext"
+import { Toaster } from "react-hot-toast"
 
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter()
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<ProductsContextProvider>
 					<CartContextProvider>
 						<Component {...pageProps} />
+						<Toaster position="bottom-center" />
 					</CartContextProvider>
 				</ProductsContextProvider>
 			</NextThemesProvider>
