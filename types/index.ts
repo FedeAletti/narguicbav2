@@ -13,7 +13,7 @@ export type Product = {
 	thumbnail: string
 	price: number
 	isAvailable: boolean
-	brandColor: string
+	brandColor?: string
 }
 
 export type ProductInCard = Product & {
