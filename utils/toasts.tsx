@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 const Logo = () => {
 
     return (
+        // eslint-disable-next-line @next/next/no-img-element
         <img src={LOGO_URL} alt="logo" width={48} />
     )
 }
