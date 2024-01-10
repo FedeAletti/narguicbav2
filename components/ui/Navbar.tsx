@@ -18,13 +18,26 @@ export function NavBar() {
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
 	const menuItems = [
-		"Inicio",
-		"Tienda",
-		"Eventos",
-		"Nosotros",
-		"Blog",
-		"Cuenta",
-		"Log Out",
+		{
+			label: "Inicio",
+			href: "/",
+		},
+		{
+			label: "Tienda",
+			href: "/tienda",
+		},
+		{
+			label: "Eventos",
+			href: "/eventos",
+		},
+		{
+			label: "Nosotros",
+			href: "/nosotros",
+		},
+		{
+			label: "Blog",
+			href: "/blog",
+		},
 	]
 
 	return (
@@ -48,7 +61,9 @@ export function NavBar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link color="foreground" href="/eventos">Eventos</Link>
+					<Link color="foreground" href="/eventos">
+						Eventos
+					</Link>
 				</NavbarItem>
 				<NavbarItem>
 					<Link color="foreground" href="/nosotros">
@@ -94,9 +109,9 @@ export function NavBar() {
 									: "foreground"
 							}
 							className="w-full"
-							href="#"
+							href={item.href}
 							size="lg">
-							{item}
+							{item.label}
 						</Link>
 					</NavbarMenuItem>
 				))}

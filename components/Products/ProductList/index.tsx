@@ -1,59 +1,96 @@
 import React, { useEffect, useState } from "react"
 import { ProductCard } from "../ProductCard"
 import { Product } from "@/types"
-import { Breadcrumbs, BreadcrumbItem, Skeleton, Card } from "@nextui-org/react"
-
-const getProds = async (): Promise<Product[]> => {
-	const res = await fetch("/api/hello")
-	const data = (await res.json()) as Product[]
-	return data
-}
+import {
+	Breadcrumbs,
+	BreadcrumbItem,
+	Skeleton,
+	Card,
+	Button,
+	ButtonGroup,
+} from "@nextui-org/react"
+import { motion } from "framer-motion"
+import { getProducts } from "@/utils/api"
 
 export const ProductList = () => {
 	const [products, setProducts] = useState([] as Product[])
 	const [category, setCategory] = useState("")
+	const [selectedId, setSelectedId] = useState(null)
 
 	useEffect(() => {
-		getProds().then((data) => {
-			setTimeout(() => {
+		if (category !== "") {
+			getProducts().then((data) => {
+				setProducts(data.filter((item) => item.category === category))
+			})
+		} else {
+			getProducts().then((data) => {
 				setProducts(data)
-			}, 2500)
-		})
-	}, [])
+			})
+		}
+	}, [category])
+
+	const container = {
+		hidden: { opacity: 1, scale: 0 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				delayChildren: 0.3,
+				staggerChildren: 0.2,
+			},
+		},
+	}
+
+	const CATEGORIES = [
+		{
+			label: "Narguilas",
+			value: "narguila",
+		},
+		{
+			label: "Tabacos",
+			value: "tabaco",
+		},
+		{
+			label: "Carbones",
+			value: "carbon",
+		},
+		{
+			label: "Accesorios",
+			value: "accesorio",
+		},
+	]
 
 	return (
-		<div className="w-[90%] px-5">
-			<Breadcrumbs isDisabled>
-				<BreadcrumbItem>Tienda</BreadcrumbItem>
-				<BreadcrumbItem>{category}</BreadcrumbItem>
-			</Breadcrumbs>
-			<article className="gap-5 grid grid-cols-12 mt-5">
-				{products.length > 0
-					? products.map((item, index) => (
-							<ProductCard key={index} item={item} />
-					  ))
-					: Array.from({ length: 10 }).map((_, i) => (
-							<Card
-								className="col-span-12 md:col-span-3 space-5 p-4"
-								radius="lg"
-								key={i}>
-								<Skeleton className="rounded-lg">
-									<div className="h-24 rounded-lg bg-default-300"></div>
-								</Skeleton>
-								<div className="space-y-3">
-									<Skeleton className="w-3/5 rounded-lg">
-										<div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
-									</Skeleton>
-									<Skeleton className="w-4/5 rounded-lg">
-										<div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
-									</Skeleton>
-									<Skeleton className="w-2/5 rounded-lg">
-										<div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-									</Skeleton>
-								</div>
-							</Card>
-					  ))}
-			</article>
+		<div className="relative">
+			<div className="sticky top-[4rem] w-full py-5 z-50 flex items-center gap-5 justify-center flex-wrap bg-primary/80">
+				{category !== "" && (
+					<Button
+						onClick={() => setCategory("")}
+						className="bg-primary shadow-lg shadow-purple-900 border-b-1">
+						Todos
+					</Button>
+				)}
+				<Button className="bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg shadow-purple-700 border-1">
+					Ofertas
+				</Button>
+				{CATEGORIES.map((item, index) => (
+					<Button
+						key={index}
+						onClick={() => setCategory(item.value)}
+						className="bg-primary shadow-lg shadow-purple-900 border-b-1">
+						{item.label}
+					</Button>
+				))}
+			</div>
+			<motion.article
+				variants={container}
+				initial="hidden"
+				animate="visible"
+				className="flex flex-wrap items-center justify-center px-5">
+				{products.map((item, index) => (
+					<ProductCard key={index} item={item} />
+				))}
+			</motion.article>
 		</div>
 	)
 }

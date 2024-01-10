@@ -15,9 +15,10 @@ export default function handler(
 			brand: "Zomo",
 			category: "tabaco",
 			description: "rico",
-			thumbnail: "/productos/tabaco/zomo-mymint.jpeg",
+			thumbnail: "/productos/tabaco/zomo-mymint.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 1,
@@ -25,9 +26,10 @@ export default function handler(
 			brand: "Zomo",
 			category: "tabaco",
 			description: "rico",
-			thumbnail: "/productos/tabaco/zomo-mystrawberry.jpeg",
+			thumbnail: "/productos/tabaco/zomo-mystrawberry.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 2,
@@ -35,9 +37,10 @@ export default function handler(
 			brand: "Zomo",
 			category: "tabaco",
 			description: "rico",
-			thumbnail: "/productos/tabaco/zomo-stronglemon.jpeg",
+			thumbnail: "/productos/tabaco/zomo-stronglemon.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 3,
@@ -45,9 +48,10 @@ export default function handler(
 			brand: "Adalya",
 			category: "tabaco",
 			description: "rico",
-			thumbnail: "/productos/tabaco/adalya-lemonpie.jpeg",
+			thumbnail: "/productos/tabaco/adalya-lemonpie.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 4,
@@ -55,9 +59,10 @@ export default function handler(
 			brand: "Blue Horse",
 			category: "tabaco",
 			description: "rico",
-			thumbnail: "/productos/tabaco/bluehorse-bakunights.jpeg",
+			thumbnail: "/productos/tabaco/bluehorse-bakunights.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 5,
@@ -65,9 +70,10 @@ export default function handler(
 			brand: "Adalya",
 			category: "tabaco",
 			description: "200g",
-			thumbnail: "/productos/tabaco/adalya-bluemelon.jpeg",
+			thumbnail: "/productos/tabaco/adalya-bluemelon.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "red-600"
 		},
 		{
 			id: 6,
@@ -75,19 +81,21 @@ export default function handler(
 			brand: "Adalya",
 			category: "tabaco",
 			description: "50g",
-			thumbnail: "/productos/tabaco/adalya-love66.jpeg",
+			thumbnail: "/productos/tabaco/adalya-love66.png",
 			price: 2300,
 			isAvailable: true,
+			brandColor: "#8b5cf6"
 		},
-		{
+		{	
 			id: 7,
 			title: "Narguila ATH",
 			brand: "Adalya",
 			category: "narguila",
 			description: "God nargui",
-			thumbnail: "/productos/narguila/nargui-1.jpeg",
+			thumbnail: "/productos/narguila/nargui-1.png",
 			price: 230000,
 			isAvailable: true,
+			brandColor: "#8b5cf6"
 		}
 	]
 
