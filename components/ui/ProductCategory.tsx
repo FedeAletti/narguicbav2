@@ -1,34 +1,52 @@
-import {
-	Card,
-	CardHeader,
-	CardBody,
-	Image,
-	CardFooter,
-	Button,
-} from "@nextui-org/react"
+import { SquareIcon } from "@/components/icons"
+import { Product } from "@/types"
+import { Image } from "@nextui-org/react"
+import { motion } from "framer-motion"
+import { useRouter } from "next/router"
 import React from "react"
 
-export const ProductCategory = () => {
+type CardCategoryProps = {
+	title: string
+	subtitle: string
+	href: string
+}
+
+export const ProductCard = ({ title, subtitle, href }: CardCategoryProps) => {
+	const router = useRouter()
+
+	const itemAnimation = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+		},
+	}
+
 	return (
-		<Card isFooterBlurred={true} radius="lg" className="border-none col-span-12 md:col-span-4">
-			<Image
-				alt="Woman listing to music"
-				className="object-cover "
-				height={500}
-				src="https://i.ibb.co/C7DSPgP/tobacco.jpg"
-				width={500}
-			/>
-			<CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-				<p className="text-tiny text-white/80">Available soon.</p>
-				<Button
-					className="text-tiny text-white bg-black/20"
-					variant="flat"
-					color="default"
-					radius="lg"
-					size="sm">
-					Notify me
-				</Button>
-			</CardFooter>
-		</Card>
+		<motion.div
+			variants={itemAnimation}
+			initial="hidden"
+			animate="visible"
+			onClick={() => router.push(`/tienda/${id}`)}
+			className={`flex-shrink-0 m-6 relative overflow-hidden bg-[#581c87] rounded-lg max-w-xs shadow-lg group transition-all ease-linear duration-200 hover:cursor-pointer`}>
+			<div className="group-hover:scale-50 transition-all ease-linear duration-200">
+				<SquareIcon />
+			</div>
+			<div className="relative bottom-32 flex items-center justify-center">
+				<div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 bg-[radial-gradient(black,_transparent_60%)] rotate-[0,_0,_1,_20deg] [scale3d(1,_0.6,_1)] opacity-[0.2]"></div>
+				<Image
+					className="relative w-full object-cover top-0 "
+					src={thumbnail}
+					alt=""
+				/>
+			</div>
+			<div className="absolute bottom-0 text-white px-6 pb-6 mt-6 w-full">
+				<span className="block opacity-75 -mb-1">{subtitle}</span>
+				<div className="flex justify-between">
+					<span className="block font-semibold text-xl">{title}</span>
+					<span className="bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center"></span>
+				</div>
+			</div>
+		</motion.div>
 	)
 }

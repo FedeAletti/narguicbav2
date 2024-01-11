@@ -9,9 +9,21 @@ const TiendaPage = () => {
 	return (
 		<DefaultLayout>
 			<section className="my-10 grid grid-cols-12 gap-5 px-5">
-				<ProductCategory />
-				<ProductCategory />
-				<ProductCategory />
+				<ProductCategory
+					title="Narguilas"
+					subtitle="Cordoba"
+					href="/tienda/narguilas"
+				/>
+				<ProductCategory
+					title="Tabacos"
+					subtitle="Cordoba"
+					href="/tienda/tabacos"
+				/>
+				<ProductCategory
+					title="Accesorios"
+					subtitle="Cordoba"
+					href="/tienda/accesorios"
+				/>
 			</section>
 			<section className="w-screen min-h-screen container">
 				{/* <div className="hidden lg:block lg:col-span-3 bg-white rounded-xl px-5 py-9 h-96 row-span-4">
@@ -26,7 +38,10 @@ const TiendaPage = () => {
 						</RadioGroup>
 					</div>
 				</div> */}
-				<h2 className={`${[courage.className].join(" ")} text-3xl text-center text-primary-foreground font-semibold px-5 py-4`}>
+				<h2
+					className={`${[courage.className].join(
+						" "
+					)} text-3xl text-center text-primary-foreground font-semibold px-5 py-4`}>
 					Productos
 				</h2>
 				<ProductList />
