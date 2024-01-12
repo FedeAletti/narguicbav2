@@ -11,8 +11,10 @@ import {
 } from "@nextui-org/react"
 import { motion } from "framer-motion"
 import { getProducts } from "@/utils/api"
+import { usePathname } from "next/navigation"
 
 export const ProductList = () => {
+	const pathname = usePathname()
 	const [products, setProducts] = useState([] as Product[])
 	const [category, setCategory] = useState("")
 	const [selectedId, setSelectedId] = useState(null)
@@ -62,7 +64,7 @@ export const ProductList = () => {
 
 	return (
 		<div className="relative">
-			<div className="sticky top-[4rem] w-full py-5 z-50 flex items-center gap-5 justify-center flex-wrap bg-primary/80">
+			<div className="sticky top-[3.9rem] w-full py-5 z-50 flex items-center gap-5 justify-center flex-wrap bg-primary/80">
 				{category !== "" && (
 					<Button
 						onClick={() => setCategory("")}

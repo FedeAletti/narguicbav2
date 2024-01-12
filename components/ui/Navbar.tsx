@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
 	Navbar,
 	NavbarBrand,
@@ -10,13 +10,16 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	Image,
+	Chip,
 } from "@nextui-org/react"
 import { CartIcon, ProfileIcon } from "../icons"
 import { LOGO_URL } from "@/constants"
+import { useCartContext } from "@/context/CartContext"
+import { ProductInCard } from "@/types"
 
 export function NavBar() {
-	const [isMenuOpen, setIsMenuOpen] = React.useState(false)
-
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
+	const [cartCount, setCartCount] = useState(0)
 	const menuItems = [
 		{
 			label: "Inicio",
@@ -39,6 +42,19 @@ export function NavBar() {
 			href: "/blog",
 		},
 	]
+
+	const { cart } = useCartContext()
+
+	// Inicializamos una variable para almacenar la suma
+
+	useEffect(() => {
+		let sumaQuantity = 0
+		cart.forEach((producto: ProductInCard) => {
+			// Sumamos la propiedad 'quantity' de cada objeto al total
+			sumaQuantity += producto.quantity!
+		})
+		setCartCount(sumaQuantity)
+	}, [cart])
 
 	return (
 		<Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -83,31 +99,21 @@ export function NavBar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link href="/cart">
+					<Link href="/cart" className="relative">
 						<CartIcon />
+						{cartCount > 0 && (
+							<small className="absolute top-[-10px] left-[-10px] text-white font-semibold bg-purple-600 rounded-full px-2">
+								{cartCount}
+							</small>
+						)}
 					</Link>
 				</NavbarItem>
-
-				{/* <NavbarItem className="hidden lg:flex">
-					<Link href="#">Login</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Button as={Link} color="primary" href="#" variant="flat">
-						Sign Up
-					</Button>
-				</NavbarItem> */}
 			</NavbarContent>
-			<NavbarMenu>
+			<NavbarMenu className="z-50">
 				{menuItems.map((item, index) => (
 					<NavbarMenuItem key={`${item}-${index}`}>
 						<Link
-							color={
-								index === 2
-									? "primary"
-									: index === menuItems.length - 1
-									? "danger"
-									: "foreground"
-							}
+							color="foreground"
 							className="w-full"
 							href={item.href}
 							size="lg">

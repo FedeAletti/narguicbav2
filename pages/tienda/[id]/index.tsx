@@ -3,6 +3,7 @@ import { ProductCard } from "@/components/Products/ProductCard"
 import { ProductDetail } from "@/components/Products/ProductDetail"
 import { ProductList } from "@/components/Products/ProductList"
 import { PriceIcon, SquareIcon } from "@/components/icons"
+import { InfiniteHero } from "@/components/ui/InfiniteHero"
 import { courage } from "@/config/fonts"
 import DefaultLayout from "@/layouts/default"
 import { Product } from "@/types"
@@ -29,6 +30,7 @@ const ProductDetailPage = () => {
 				{product ? <ProductDetail product={product} /> : <div><Skeleton /></div>}
 			</div>
 			<div className="mx-auto max-w-[70vw]">
+				<InfiniteHero />
 				<h2 className={`${courage.className} text-xl font-bold text-center my-4`}>
 					PRODUCTOS RELACIONADOS
 				</h2>

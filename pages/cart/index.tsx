@@ -3,6 +3,7 @@ import { useCartContext } from "@/context/CartContext"
 import DefaultLayout from "@/layouts/default"
 import { ProductInCard } from "@/types"
 import { Button, ButtonGroup, Divider } from "@nextui-org/react"
+import Link from "next/link"
 import React, { useEffect, useState } from "react"
 
 const CartPage = () => {
@@ -28,7 +29,7 @@ const CartPage = () => {
 		<DefaultLayout>
 			<h1 className="my-10 text-3xl font-bold">Carrito</h1>
 			<section className="grid grid-cols-12 gap-8 w-[90vw] md:w-[80vw] min-h-screen">
-				<div className="col-span-12 md:col-span-8 bg-transparent text-black rounded-lg h-[50vh]">
+				<div className="col-span-12 md:col-span-8 bg-transparent text-black rounded-lg min-h-[50vh]">
 					<CartList />
 				</div>
 				{productsInCart.length > 0 && (
@@ -71,20 +72,24 @@ const CartPage = () => {
 								onClick={deleteCart}>
 								Eliminar carrito
 							</Button>
-							<Button
-								className="text-md  font-bold text-white border-b-1 border-b-jaguar-600"
-								variant="light"
-								radius="lg"
-								size="md">
-								Seguir comprando
-							</Button>
-							<Button
-								className="text-md  font-bold text-white bg-white-600 border-2 border-b-jaguar-600 hover:bg-jaguar-600 hover:border-transparent"
-								color="default"
-								radius="lg"
-								size="md">
-								Finalizar compra
-							</Button>
+							<Link href={"/tienda"} legacyBehavior>
+								<Button
+									className="text-md  font-bold text-white border-b-1 border-b-jaguar-600"
+									variant="light"
+									radius="lg"
+									size="md">
+									Seguir comprando
+								</Button>
+							</Link>
+							<Link href={"/checkout"} legacyBehavior>
+								<Button
+									className="text-md  font-bold text-white bg-white-600 border-2 border-b-jaguar-600 hover:bg-jaguar-600 hover:border-transparent"
+									color="default"
+									radius="lg"
+									size="md">
+									Finalizar compra
+								</Button>
+							</Link>
 						</div>
 					</div>
 				)}

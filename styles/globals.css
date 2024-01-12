@@ -6,6 +6,10 @@
 	@apply font-title text-5xl font-bold;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
 	width: 10px;
 }

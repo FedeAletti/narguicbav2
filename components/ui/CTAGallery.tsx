@@ -7,6 +7,7 @@ import {
 	Image,
 	Button,
 } from "@nextui-org/react"
+import Link from "next/link"
 
 export function CTAGallery() {
 	return (
@@ -29,29 +30,17 @@ export function CTAGallery() {
 							La mayor variedad del país
 						</h4>
 					</div>
-					<Button className="text-tiny self-end" color="primary" radius="full" size="sm">
+					<Link
+						href="/tienda"
+						className="text-tiny self-end rounded-full bg-white hover:bg-white/75 text-primary font-bold hover:text-primary px-3 py-2">
 						Visitar la tienda
-					</Button>
+					</Link>
 				</CardFooter>
 			</Card>
 			<Card
 				isFooterBlurred
 				className="w-full h-[400px] col-span-12 sm:col-span-7 bg-[url('https://i.ibb.co/rc2H2gK/event-card-banner.jpg')] bg-cover bg-[50%_35%]">
-				{/* <CardHeader className="absolute z-10 top-1 flex-col items-start">
-					<p className="text-tiny text-white/60 uppercase font-bold">
-						Your day your way
-					</p>
-					<h4 className="text-white/90 font-medium text-xl">
-						Your checklist for better sleep
-					</h4>
-				</CardHeader> */}
-				{/* <Image
-					removeWrapper
-					alt="Relaxing app background"
-					className="z-0 w-full h-full object-cover"
-					src="https://i.ibb.co/rc2H2gK/event-card-banner.jpg"
-				/> */}
-				<CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+				<CardFooter className="absolute flex-col md:flex-row bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
 					<div className="flex flex-grow gap-2 items-center">
 						<div className="flex flex-col">
 							<p className="text-tiny text-white/60 uppercase font-bold">
@@ -62,27 +51,15 @@ export function CTAGallery() {
 							</h4>
 						</div>
 					</div>
-					<Button radius="full" size="sm">
-						Ir eventos
-					</Button>
+					<Link href={"/eventos"} className="text-tiny self-end rounded-full bg-white hover:bg-white/75 text-primary font-bold hover:text-primary px-3 py-2">
+						Ir a eventos
+					</Link>
 				</CardFooter>
 			</Card>
-			<Card isFooterBlurred className="w-full h-[400px] col-span-12 bg-[url('https://i.ibb.co/sp7fMW7/community.png')] bg-cover bg-[50%_20%]">
-				{/* <CardHeader className="absolute z-10 top-1 flex-col items-start">
-					<p className="text-tiny text-white/60 uppercase font-bold">
-						Your day your way
-					</p>
-					<h4 className="text-white/90 font-medium text-xl">
-						Your checklist for better sleep
-					</h4>
-				</CardHeader> */}
-				{/* <Image
-					removeWrapper
-					alt="Relaxing app background"
-					className="z-0 w-full h-full object-cover object-top"
-					src="https://i.ibb.co/sp7fMW7/community.png"
-				/> */}
-				<CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+			<Card
+				isFooterBlurred
+				className="w-full h-[400px] col-span-12 bg-[url('https://i.ibb.co/sp7fMW7/community.png')] bg-cover bg-[50%_20%]">
+				<CardFooter className="absolute flex-col md:flex-row bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
 					<div className="flex flex-grow gap-2 items-center">
 						<div className="flex flex-col">
 							<p className="text-tiny text-white/60 uppercase font-bold">
@@ -93,9 +70,9 @@ export function CTAGallery() {
 							</h4>
 						</div>
 					</div>
-					<Button radius="full" size="sm">
+					<Link href={"/blog"} className="text-tiny self-end rounded-full bg-white hover:bg-white/75 text-primary font-bold hover:text-primary px-3 py-2">
 						Ir al Blog
-					</Button>
+					</Link>
 				</CardFooter>
 			</Card>
 		</div>

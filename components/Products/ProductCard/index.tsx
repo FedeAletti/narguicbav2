@@ -79,12 +79,12 @@ export const ProductCard = ({ item }: CardProductProps) => {
 			onClick={() => router.push(`/tienda/${id}`)}
 			className={`flex-shrink-0 m-6 relative overflow-hidden bg-[#581c87] rounded-lg max-w-xs shadow-lg group transition-all ease-linear duration-200 hover:cursor-pointer`}>
 			<div className="group-hover:scale-50 transition-all ease-linear duration-200">
-				<SquareIcon />
+				<SquareIcon className="filter blur-sm"/>
 			</div>
 			<div className="relative bottom-32 flex items-center justify-center">
-				<div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 bg-[radial-gradient(black,_transparent_60%)] rotate-[0,_0,_1,_20deg] [scale3d(1,_0.6,_1)] opacity-[0.2]"></div>
+				{/* <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 bg-[radial-gradient(black,_transparent_60%)] rotate-[0,_0,_1,_20deg] [scale3d(1,_0.6,_1)] opacity-[0.2]"></div> */}
 				<Image
-					className="relative w-full object-cover top-0 "
+					className="relative w-full object-cover top-0 drop-shadow-2xl"
 					src={thumbnail}
 					alt=""
 				/>

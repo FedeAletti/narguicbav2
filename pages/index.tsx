@@ -9,7 +9,11 @@ export default function IndexPage() {
 	return (
 		<DefaultLayout>
 			<div className="relative -top-24 z-10 border-b-2 border-b-primary-800 ">
-				<BackgroundVideo src="/bg-video-male.mp4" />
+				<BackgroundVideo
+					src={
+						`bg-video-${Math.floor(Math.random() * 2) + 1}.mp4`
+					}
+				/>
 				<div className="grid min-h-screen items-end justify-center overflow-x-hidden pb-20">
 					<InfiniteHero />
 				</div>
