@@ -55,7 +55,7 @@ export const ModalAge = () => {
 								<Button
 									className="bg-transparent border border-white hover:bg-primary"
 									size="lg"
-									onPress={() => router.back()}>
+									onPress={() => window.location.replace("https://www.google.com")}>
 									No
 								</Button>
 								<Button
