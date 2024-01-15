@@ -44,3 +44,76 @@ a:hover {
 	background: var(--red);
 	transform-origin: 0%;
 }
+
+/* CARDS */
+.category_card {
+	min-width: 33.33%;
+	height: 254px;
+	background-image: linear-gradient(163deg, #af40ff 70%, #eb5a17 100%);
+	border-radius: 20px;
+	transition: all 0.3s;
+}
+
+.category_card2 {
+	width: 190px;
+	min-height: 254px;
+	border-radius: 18px;
+	transition: all 0.2s;
+}
+
+.category_card2:hover {
+	transform: scale(0.98);
+	border-radius: 20px;
+}
+
+.category_card:hover {
+	box-shadow: 0px 0px 30px .23px #af40ff;
+}
+
+/* BUTTONS */
+.neon-button {
+	align-items: center;
+	background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #eb5a17);
+	border: 0;
+	border-radius: 8px;
+	box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+	box-sizing: border-box;
+	color: #ffffff;
+	display: flex;
+	font-family: Phantomsans, sans-serif;
+	font-size: 18px;
+	justify-content: center;
+	line-height: 1em;
+	max-width: 100%;
+	min-width: 140px;
+	padding: 3px;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.neon-button:active,
+.neon-button:hover {
+	outline: 0;
+}
+
+.neon-button span {
+	background-color: rgb(5, 6, 45);
+	padding: 16px 24px;
+	border-radius: 6px;
+	width: 100%;
+	height: 100%;
+	transition: 300ms;
+}
+
+.neon-button:hover span {
+	background: none;
+}
+
+.neon-button:active {
+	transform: scale(0.9);
+}

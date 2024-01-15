@@ -1,3 +1,4 @@
+import { ModalAge } from "@/components/ModalAge"
 import { courage, manrope } from "@/config/fonts"
 import { Html, Head, Main, NextScript } from "next/document"
 

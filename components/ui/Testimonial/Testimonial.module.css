@@ -1,0 +1,53 @@
+.card {
+	background-color: #32134b;
+	padding: 1.5rem 2rem;
+	max-width: 320px;
+	border-radius: 10px;
+	border: 1px solid #8836cb;
+}
+
+.header {
+	display: flex;
+	align-items: flex-end;
+	grid-gap: 1rem;
+	gap: 1rem;
+}
+
+.header .image {
+	height: 3rem;
+	width: 3rem;
+	border-radius: 9999px;
+	object-fit: cover;
+	background-color: royalblue;
+}
+
+.stars {
+	display: flex;
+	justify-content: flex-start;
+	grid-gap: 0.125rem;
+	gap: 0.125rem;
+}
+
+.stars svg {
+	height: 1.5rem;
+	width: 1.5rem;
+	fill: white;
+}
+
+.name {
+	margin-top: 0.25rem;
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+	font-weight: 600;
+	--tw-text-opacity: 1;
+	color: white;
+}
+
+.message {
+	overflow: hidden;
+	display: -webkit-box;
+	height: 80px;
+	-webkit-box-orient: vertical;
+	color: white;
+	margin: auto 0;
+}

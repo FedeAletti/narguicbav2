@@ -8,6 +8,7 @@ import "@/styles/globals.css"
 import ProductsContextProvider from "@/context/ProductsContext"
 import CartContextProvider from "@/context/CartContext"
 import { Toaster } from "react-hot-toast"
+import { ModalAge } from "@/components/ModalAge"
 
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter()
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					<CartContextProvider>
 						<Component {...pageProps} />
 						<Toaster position="bottom-center" />
+						<ModalAge />
 					</CartContextProvider>
 				</ProductsContextProvider>
 			</NextThemesProvider>
