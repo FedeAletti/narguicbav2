@@ -60,7 +60,7 @@ export default function IndexPage() {
 				</div>
 			</section>
 			<section className="w-screen py-10">
-				<h2 className={`${courage.className} text-3xl text-center`}>
+				<h2 className={`${courage.className} pb-8 text-3xl text-center`}>
 					Que es una narguila
 				</h2>
 				<div className="mt-8 max-w-[98vw] md:max-w-[80vw] px-5 mx-auto grid grid-cols-12 gap-5">
@@ -91,7 +91,7 @@ export default function IndexPage() {
 				</div>
 			</section>
 			<section className="w-screen py-10">
-				<h2 className={`${courage.className} text-3xl text-center`}>
+				<h2 className={`${courage.className} pb-8 text-3xl text-center`}>
 					Lo que dicen nuestros clientes
 				</h2>
 				<div className="mt-8 max-w-[98vw] md:max-w-[80vw] grid grid-cols-[repeat(auto-fit,_minmax(360px,_1fr))] mx-auto gap-3">

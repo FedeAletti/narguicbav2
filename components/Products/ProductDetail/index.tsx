@@ -61,8 +61,6 @@ export const ProductDetail = ({
 		setQuantity(1)
 	}
 
-	useEffect(() => {})
-
 	return (
 		<article className="col-span-12 grid grid-cols-12 bg-white gap-4 my-10 rounded-lg md:rounded-bl-[35%] relative">
 			<motion.div

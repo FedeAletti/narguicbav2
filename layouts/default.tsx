@@ -13,7 +13,7 @@ export default function DefaultLayout({
 		<div className="flex flex-col min-h-screen w-screen">
 			<Head />
 			<NavBar />
-			<main className="mx-auto flex-grow">{children}</main>
+			<main className="mx-auto flex-grow relative">{children}</main>
 			<Footer />
 		</div>
 	)

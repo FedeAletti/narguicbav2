@@ -51,7 +51,7 @@ export function CTAGallery() {
 			</Link>
 			<Link href={"/eventos"} className={`${styles.card}`}>
 				<Image
-					src="https://i.ibb.co/rc2H2gK/event-card-banner.jpg"
+					src="/eventos/2.jpeg"
 					className={`${styles.card__image} z-0`}
 					alt=""
 				/>
@@ -65,14 +65,14 @@ export function CTAGallery() {
 						<div className="flex justify-between w-full">
 							<div>
 								<p className="text-tiny text-white uppercase font-bold w-full">
-									Conocé nuestros productos
+									Servicio Premium
 								</p>
 
 								<h4 className="font-bold text-white text-lg uppercase">
-									La mayor variedad del país
+									Estamos en tus celebraciones
 								</h4>
 							</div>
-							<div className="self-end bg-white p-3 rounded-full">
+							<div className="self-end bg-white p-2 rounded-full">
 								<ExternalLinkIcon className={``} />
 							</div>
 						</div>
