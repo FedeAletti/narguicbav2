@@ -9,6 +9,7 @@ import ProductsContextProvider from "@/context/ProductsContext"
 import CartContextProvider from "@/context/CartContext"
 import { Toaster } from "react-hot-toast"
 import { ModalAge } from "@/components/ModalAge"
+import { UserProvider } from "@/context/UserContext"
 
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter()
@@ -16,13 +17,15 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<NextUIProvider navigate={router.push}>
 			<NextThemesProvider>
-				<ProductsContextProvider>
-					<CartContextProvider>
-						<Component {...pageProps} />
-						<Toaster position="bottom-center" />
-						<ModalAge />
-					</CartContextProvider>
-				</ProductsContextProvider>
+				<UserProvider>
+					<ProductsContextProvider>
+						<CartContextProvider>
+							<Component {...pageProps} />
+							<Toaster position="bottom-center" />
+							<ModalAge />
+						</CartContextProvider>
+					</ProductsContextProvider>
+				</UserProvider>
 			</NextThemesProvider>
 		</NextUIProvider>
 	)

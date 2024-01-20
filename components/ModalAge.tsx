@@ -12,12 +12,14 @@ import {
 import { useRouter } from "next/router"
 import { useState } from "react"
 
+
 export const ModalAge = () => {
 	// const { isOpen, onOpen, onClose } = useDisclosure()
-
-	const [open, setOpen] = useState(true)
-
 	const router = useRouter()
+	const isAdminPage = router.pathname.includes("panel")
+	const [open, setOpen] = useState(!isAdminPage)
+
+
 
 	return (
 		<Modal
@@ -28,24 +30,20 @@ export const ModalAge = () => {
 			<ModalContent className="w-[80vw]">
 				{(onClose) => (
 					<>
-						<ModalHeader className="flex flex-row justify-center items-center gap-1">
+						<ModalHeader className="flex flex-row justify-center items-center gap-1 relative">
 							<Image
 								src={LOGO_URL}
 								alt="Modal Title"
 								height={150}
 								width={150}
 							/>
-							{/* <Image
-								src="/logo-banner.png"
-								alt="Modal Title"
-								height={500}
-								width={500}
-							/> */}
 						</ModalHeader>
 						<ModalBody className="my-4">
 							<p className="text-center text-xl font-semibold">
 								Hola! Necesitamos estar seguros que sos mayor de edad.
 							</p>
+							<span className="text-center z-10 text-5xl">🔞</span>
+
 							<p className="text-center text-2xl font-bold">
 								¿Ya tenés 18 años?
 							</p>
@@ -55,7 +53,9 @@ export const ModalAge = () => {
 								<Button
 									className="bg-transparent border border-white hover:bg-primary"
 									size="lg"
-									onPress={() => window.location.replace("https://www.google.com")}>
+									onPress={() =>
+										window.location.replace("https://www.google.com")
+									}>
 									No
 								</Button>
 								<Button

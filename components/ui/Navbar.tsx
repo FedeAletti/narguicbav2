@@ -93,7 +93,7 @@ export function NavBar() {
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarContent justify="end" className="flex gap-8">
-				<NavbarItem>
+				<NavbarItem className="hidden">
 					<Link href="/cuenta">
 						<ProfileIcon />
 					</Link>

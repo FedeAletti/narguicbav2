@@ -21,9 +21,7 @@ const EventosPage = () => {
 			<article className="mx-auto w-[90%]">
 				<div className="grid grid-cols-12 gap-6 px-5 mt-10">
 					<div className="col-span-12 xl:col-span-6 ">
-						<h2 className={`${courage.className} text-3xl my-8`}>
-							Eventos
-						</h2>
+						<h2 className={`${courage.className} text-3xl my-8`}>Eventos</h2>
 						<p className="w-[90%] text-xl">
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
 							impedit facilis voluptates recusandae, sit illo vel sed, vitae,
@@ -90,6 +88,38 @@ const EventosPage = () => {
 							height={300}
 						/>
 					</motion.div>
+				</div>
+				<div className="space-y-3 my-5">
+					<h5 className={`${courage.className} text-lg`}>Nuestro servicio</h5>
+					<p>
+						<b className="bg-orange-600 px-1">
+							Nargui CBA te ofrece el mejor servicio personalizado de catering
+							de narguilas
+						</b>{" "}
+						para casamientos, reuniones, convenciones, fiestas privadas y demás
+						eventos para que acompañes con unas narguilas y llenes de buen humo
+						tu evento para hacerlo diferente. <br />
+						Disponemos de distintos tipos de servicios con la posibilidad de
+						elegir entre el número y tipo de narguilas, así como la cantidad y
+						calidad de los sabores que disfrutarás en el evento.
+					</p>
+					<p>
+						Nuestro personal está ampliamente calificado y especializado en el
+						sector con una larga experiencia para que no tengas que preocuparte
+						de que nada salga mal.{" "}
+						<b className="bg-orange-600 px-1">
+							Creemos que una buena narguila tiene que estar preparada con los
+							mejores productos
+						</b>{" "}
+						por ello nunca escatimamos en tener lo mejor del mercado, la calidad
+						y novedad es nuestro punto diferenciador para que tu evento sea
+						diferencial y que se convierta en una experiencia única.
+					</p>
+					<a
+						href="https://wa.link/uvtlgm"
+						className="inline-flex	w-full h-12 animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+						Quiero contratar a Nargui CBA para mi evento
+					</a>
 				</div>
 			</article>
 

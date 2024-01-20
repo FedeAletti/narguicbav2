@@ -20,3 +20,24 @@ export type ProductInCard = Product & {
 	[key: string]: any
 	quantity?: number
 }
+
+export interface Brand {
+	id: number
+	name: string
+	prices: number
+	logo: string
+	products?: any[] // Adjust this type based on the actual structure of 'products'
+}
+
+export interface Subcategory {
+	id: number
+	name: string
+	products?: any[] // Adjust this type based on the actual structure of 'products'
+}
+
+export interface Category {
+	id: number
+	name: string
+	subcategory: Subcategory | null
+	logo: string
+}
