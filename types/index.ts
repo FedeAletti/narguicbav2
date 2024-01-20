@@ -24,7 +24,7 @@ export type ProductInCard = Product & {
 export interface Brand {
 	id: number
 	name: string
-	prices: number
+	price: number
 	logo: string
 	products?: any[] // Adjust this type based on the actual structure of 'products'
 }

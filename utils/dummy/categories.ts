@@ -4,60 +4,54 @@ const brands: Brand[] = [
 	{
 		id: 1,
 		name: "Zomo",
-		prices: [
-			{
-				id: 1,
-				quantity: 50,
-				price: 2300,
-			},
-		],
+		price: 2300,
+		// prices: [
+		// 	{
+		// 		id: 1,
+		// 		quantity: 50,
+		// 		price: 2300,
+		// 	},
+		// ],
 		logo: "",
 	},
 	{
 		id: 2,
 		name: "Adalya",
-		prices: [
-			{
-				id: 1,
-				quantity: 50,
-				price: 2300,
-			},
-			{
-				id: 2,
-				quantity: 200,
-				price: 4600,
-			},
-		],
+		price: 2300,
+		// prices: [
+		// 	{
+		// 		id: 1,
+		// 		quantity: 50,
+		// 		price: 2300,
+		// 	},
+		// ],
 		logo: "",
 		products: [],
 	},
 	{
 		id: 3,
 		name: "Blue Horse",
-		prices: [
-			{
-				id: 1,
-				quantity: 50,
-				price: 2300,
-			},
-			{
-				id: 2,
-				quantity: 200,
-				price: 4600,
-			},
-		],
+		price: 2300,
+		// prices: [
+		// 	{
+		// 		id: 1,
+		// 		quantity: 50,
+		// 		price: 2300,
+		// 	},
+		// ],
 		logo: "",
 	},
 	{
 		id: 4,
 		name: "Ziggy",
-		prices: [
-			{
-				id: 1,
-				quantity: 50,
-				price: 2300,
-			},
-		],
+		price: 2300,
+		// prices: [
+		// 	{
+		// 		id: 1,
+		// 		quantity: 50,
+		// 		price: 2300,
+		// 	},
+		// ],
 		logo: "",
 		products: [],
 	},
