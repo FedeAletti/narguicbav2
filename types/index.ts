@@ -14,6 +14,7 @@ export type Product = {
 	category: Category
 	stock: number
 	isAvailable: boolean
+	discount?: number
 }
 
 export type ProductInCard = Product & {
