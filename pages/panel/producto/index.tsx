@@ -1,8 +1,10 @@
 import { useUserContext } from "@/context/UserContext"
 import AdminLayout from "@/layouts/admin"
+import { addProduct } from "@/service/products"
 import { Category } from "@/types"
 import { categories, subcategories } from "@/utils/dummy/categories"
 import {
+	Button,
 	Input,
 	Select,
 	SelectItem,
@@ -17,6 +19,7 @@ interface FormData {
 	description: string
 	thumbnail: string
 	price: number
+	stock: number
 	brandId: number
 	relatedProducts: []
 	categoryId: number | null
@@ -31,6 +34,7 @@ const ProductPanel = () => {
 		description: "",
 		thumbnail: "",
 		price: 0,
+		stock: 0,
 		isAvailable: true,
 		brandId: 0,
 		relatedProducts: [],
@@ -61,6 +65,7 @@ const ProductPanel = () => {
 		e.preventDefault()
 		// Aquí puedes realizar acciones como enviar los datos al servidor
 		console.log("Datos del formulario:", formData)
+		addProduct()
 	}
 
 	const handleAvailableChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -89,12 +94,17 @@ const ProductPanel = () => {
 					label="Nombre del producto"
 					defaultValue={formData.name}
 					className="max-w-xl"
+					name="name"
+					onChange={handleInputChange}
 				/>
 				<Textarea
 					isRequired
 					label="Descripción del producto"
 					labelPlacement="inside"
 					className="max-w-xl"
+					name="description"
+					defaultValue={formData.description}
+					onChange={handleInputChange}
 				/>
 				<div className="w-full max-w-xl py-10 px-10 bg-default-100 hover:bg-default-200 rounded-xl">
 					ACA IMAGEN
@@ -105,6 +115,17 @@ const ProductPanel = () => {
 					label="Precio del producto"
 					defaultValue={formData.name}
 					className="max-w-xl"
+					name="price"
+					onChange={handleInputChange}
+				/>
+				<Input
+					isRequired
+					type="number"
+					label="Stock del producto"
+					defaultValue={formData.name}
+					className="max-w-xl"
+					name="stock"
+					onChange={handleInputChange}
 				/>
 
 				<Select
@@ -166,6 +187,11 @@ const ProductPanel = () => {
 						</p>
 					</div>
 				</Switch>
+
+
+				<Button onClick={addProduct} className="max-w-xl">
+					Enviar
+				</Button>
 			</form>
 		</AdminLayout>
 	)

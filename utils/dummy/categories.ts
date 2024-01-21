@@ -61,22 +61,18 @@ export const subcategories: Subcategory[] = [
 	{
 		id: 1,
 		name: "gestores",
-		products: [],
 	},
 	{
 		id: 2,
 		name: "narguischicas",
-		products: [],
 	},
 	{
 		id: 3,
 		name: "narguismedianas",
-		products: [],
 	},
 	{
 		id: 4,
 		name: "narguisgrandes",
-		products: [],
 	},
 ]
 

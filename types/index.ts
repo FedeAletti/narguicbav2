@@ -5,15 +5,15 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 }
 
 export type Product = {
-	id: number
-	title: string
-	category: string
-	brand: "Zomo" | "Adalya" | "Blue Horse" | "Blunt Rey" | "ATH"
+	id: string
+	name: string
 	description: string
 	thumbnail: string
+	brand: Brand
 	price: number
+	category: Category
+	stock: number
 	isAvailable: boolean
-	brandColor?: string
 }
 
 export type ProductInCard = Product & {
@@ -22,22 +22,59 @@ export type ProductInCard = Product & {
 }
 
 export interface Brand {
-	id: number
+	id: string
 	name: string
-	price: number
-	logo: string
-	products?: any[] // Adjust this type based on the actual structure of 'products'
+	logo?: string
 }
 
 export interface Subcategory {
 	id: number
 	name: string
-	products?: any[] // Adjust this type based on the actual structure of 'products'
 }
 
 export interface Category {
-	id: number
+	id?: string
 	name: string
-	subcategory: Subcategory | null
-	logo: string
+	logo?: string
+}
+
+export interface Order {
+	id: string
+	products: Product[]
+	user: User
+	dateOrder: Date
+	priceTotal: number
+}
+
+export interface User {
+	id: string
+	isAdmin: boolean
+	firstName: string
+	lastName: string
+	avatar: string
+	address: Addresses[] | []
+	comnents: Comment[] | []
+	orders: Order[] | []
+	dni: string
+	phone: string
+}
+
+export interface Addresses {
+	id: string
+	ciudad: string
+	provincia: string
+	zipCode: number
+	calle: string
+	numeroCalle: string
+	referencias: string
+	barrio: string
+	inCordoba: boolean
+}
+
+export interface Comment {
+	id: string 
+	title: string
+	description: string
+	date: Date
+	rate: number
 }
