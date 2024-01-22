@@ -1,8 +1,9 @@
+import { useProductsContext } from "@/context/ProductsContext"
 import { useUserContext } from "@/context/UserContext"
 import AdminLayout from "@/layouts/admin"
 import { addProduct } from "@/service/products"
 import { Category } from "@/types"
-import { categories, subcategories } from "@/utils/dummy/categories"
+
 import {
 	Button,
 	Input,
@@ -28,6 +29,9 @@ interface FormData {
 }
 
 const ProductPanel = () => {
+
+	const { products, categories } = useProductsContext()
+
 	// Estado para almacenar los valores del formulario
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
@@ -136,24 +140,9 @@ const ProductPanel = () => {
 					defaultSelectedKeys={formData.categoryId ? [formData.categoryId] : []}
 					onChange={handleSelectChange}
 					className="max-w-xl">
-					{categories.map((category) => (
-						<SelectItem key={category.id} value={category.id}>
+					{categories.map((category: Category) => (
+						<SelectItem key={category.id!} value={category.id}>
 							{category.name}
-						</SelectItem>
-					))}
-				</Select>
-				<Select
-					isRequired
-					label="Subcategoria del producto"
-					name="subcategoryId"
-					defaultSelectedKeys={
-						formData.subcategoryId ? [formData.subcategoryId] : []
-					}
-					onChange={handleSelectChange}
-					className="max-w-xl">
-					{subcategories.map((subcategory) => (
-						<SelectItem key={subcategory.id} value={subcategory.id}>
-							{subcategory.name}
 						</SelectItem>
 					))}
 				</Select>

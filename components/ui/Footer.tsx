@@ -13,7 +13,7 @@ const mediosPago = [
 
 export const Footer = () => {
 	return (
-		<footer className="w-full  z-50 border-t-1 border-jaguar-700">
+		<footer className="w-full mt-10 z-50 border-t-1 border-jaguar-700">
 			<article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-content-center gap-8 px-5 py-6">
 				<ul className="mx-0 md:mx-auto">
 					<li>

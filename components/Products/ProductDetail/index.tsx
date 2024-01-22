@@ -79,7 +79,7 @@ export const ProductDetail = ({
 					<Image
 						className="w-full/2 overflow-visible"
 						src={product.thumbnail}
-						alt={product.title}
+						alt={product.name}
 					/>
 				</motion.div>
 			</motion.div>
@@ -100,7 +100,7 @@ export const ProductDetail = ({
 					</div>
 				)}
 				<div className="py-5 px-5">
-					<h2 className=" text-3xl font-bold">{product.title}</h2>
+					<h2 className=" text-3xl font-bold">{product.name}</h2>
 					<p className={`max-w-sm ${fromCart && "hidden"}`}>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
 						atque sed expedita ullam error commodi, voluptas ex aperiam

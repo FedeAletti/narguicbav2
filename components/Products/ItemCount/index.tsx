@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react"
 type Props = {
 	stock: number
 	onAdd: Function
-	id: number
+	id: string
 	qty?: number
 }
 

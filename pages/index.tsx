@@ -4,6 +4,7 @@ import { InfiniteHero } from "@/components/ui/InfiniteHero"
 import { Testimonial } from "@/components/ui/Testimonial/Testimonial"
 import { Title } from "@/components/ui/Title"
 import { courage } from "@/config/fonts"
+import { useProductsContext } from "@/context/ProductsContext"
 import DefaultLayout from "@/layouts/default"
 import { Button, Divider, Image, Link } from "@nextui-org/react"
 
@@ -37,7 +38,7 @@ const TESTIMONIALS = [
 		stars: 5,
 		message: "Duki aprueba 👍",
 		image: "https://i.pravatar.cc/300",
-	}
+	},
 ]
 
 export default function IndexPage() {

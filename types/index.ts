@@ -9,7 +9,7 @@ export type Product = {
 	name: string
 	description: string
 	thumbnail: string
-	brand: Brand
+	brand: string
 	price: number
 	category: Category
 	stock: number
