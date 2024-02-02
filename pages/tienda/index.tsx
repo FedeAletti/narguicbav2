@@ -13,18 +13,18 @@ const TiendaPage = () => {
 	const { categories, products, filterProducts, filteredProducts } =
 		useProductsContext()
 
-	useEffect(() => {
-		if (category === "") {
-			setProductsToRender(products)
-		} else {
-			setProductsToRender(filteredProducts)
-		}
-		console.log(productsToRender)
-	}, [products, filteredProducts, category])
+	// useEffect(() => {
+	// 	if (category === "") {
+	// 		setProductsToRender(products)
+	// 	} else {
+	// 		setProductsToRender(filteredProducts)
+	// 	}
+	// 	console.log(productsToRender)
+	// }, [products, filteredProducts, category])
 
 	const handleFilter = (category: any) => {
-		setCategory(category.title)
-		filterProducts(category.name)
+		setCategory(category)
+		filterProducts(category)
 	}
 
 	return (
@@ -90,10 +90,10 @@ const TiendaPage = () => {
 										key={categoryBtn.id}
 										onClick={() => handleFilter(categoryBtn)}
 										className={`bg-primary shadow-lg shadow-purple-900 border-b-1 ${
-											categoryBtn.title === category &&
+											categoryBtn === category &&
 											"bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg border-1"
 										}`}>
-										{categoryBtn.title}
+										{categoryBtn}
 									</Button>
 								))}
 							</div>

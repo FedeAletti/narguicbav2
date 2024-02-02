@@ -1,7 +1,4 @@
 import { MinusIcon, PlusIcon } from "@/components/icons"
-import { useCartContext } from "@/context/CartContext"
-import { useProductsContext } from "@/context/ProductsContext"
-import { Product } from "@/types"
 import { Button } from "@nextui-org/react"
 import React, { useEffect, useState } from "react"
 

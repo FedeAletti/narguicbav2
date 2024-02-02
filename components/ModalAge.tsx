@@ -69,8 +69,9 @@ export const ModalAge = () => {
 							</div>
 							<small className="mt-4 text-center">
 								<b>Advertencia</b> <br /> Algunos productos pueden contener
-								nicotina, fumar es perjudicial para la salud. Prohibida su venta para
-								menores de 18 años.
+								nicotina, fumar es perjudicial para la salud. <br /> 
+								<b>Prohibida su venta para
+								menores de 18 años.</b>
 							</small>
 						</ModalFooter>
 					</>

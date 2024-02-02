@@ -57,7 +57,7 @@ export const ProductDetail = ({
 
 	const handleAdd = () => {
 		addToCart(product, quantity)
-		successToast(`Agregaste ${quantity} ${quantity > 1 ? `${product.category}s` : `${product.category}`} al carrito`)
+		successToast(`Agregaste ${quantity} ${quantity > 1 ? `${product.categoria}s` : `${product.categoria}`} al carrito`)
 		setQuantity(1)
 	}
 
@@ -78,8 +78,8 @@ export const ProductDetail = ({
 					className="absolute left-1 top-[25%] xl:top-[4%]">
 					<Image
 						className="w-full/2 overflow-visible"
-						src={product.thumbnail}
-						alt={product.name}
+						src={product.imagen}
+						alt={product.nombre}
 					/>
 				</motion.div>
 			</motion.div>
@@ -93,14 +93,14 @@ export const ProductDetail = ({
 							<div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 bg-[radial-gradient(black,_transparent_60%)] rotate-[0,_0,_1,_20deg] [scale3d(1,_0.6,_1)] opacity-[0.2]"></div>
 							<Image
 								className="relative w-full object-cover top-0 "
-								src={product.thumbnail}
+								src={product.imagen}
 								alt=""
 							/>
 						</div>
 					</div>
 				)}
 				<div className="py-5 px-5">
-					<h2 className=" text-3xl font-bold">{product.name}</h2>
+					<h2 className=" text-3xl font-bold">{product.nombre}</h2>
 					<p className={`max-w-sm ${fromCart && "hidden"}`}>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
 						atque sed expedita ullam error commodi, voluptas ex aperiam
@@ -110,7 +110,7 @@ export const ProductDetail = ({
 					<div className="mt-5 flex flex-row justify-between items-center">
 						<div className="bg-white border-2 rounded-full border-green-500 text-green-500 w-32 text-center px-1 py-2 font-bold">
 							<span>
-								{(product.price * quantity).toLocaleString("es-AR", {
+								{(product.precio * quantity).toLocaleString("es-AR", {
 									style: "currency",
 									currency: "ARS",
 								})}
