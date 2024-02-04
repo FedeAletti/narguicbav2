@@ -5,20 +5,30 @@ import { courage } from "@/config/fonts"
 import { useProductsContext } from "@/context/ProductsContext"
 import DefaultLayout from "@/layouts/default"
 import { Product } from "@/types"
+import { seleccionarNumerosAzar } from "@/utils/randomProducts"
 import { Skeleton } from "@nextui-org/react"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
 
 const ProductDetailPage = () => {
 	const [product, setProduct] = useState<null | Product>(null)
+	const [relatedProducts, setRelatedProducts] = useState<null | Product[]>(null)
 
 	const { id } = useRouter().query
 
 	const { products } = useProductsContext()
 
 	useEffect(() => {
-		if (products && id) {
-			setProduct(products.find((product: any) => product.id === id))
+		if (products) {
+			if (products && id) {
+				setProduct(products.find((product: any) => product.id === id))
+			}
+			const randomNums = seleccionarNumerosAzar(products, 3)
+
+			const productosSeleccionados: Product[] = randomNums.map(
+				(num) => products[num]
+			)
+			setRelatedProducts(productosSeleccionados)
 		}
 	}, [id, products])
 
@@ -39,7 +49,7 @@ const ProductDetailPage = () => {
 					className={`${courage.className} text-xl font-bold text-center my-4`}>
 					PRODUCTOS RELACIONADOS
 				</h2>
-				{products && <ProductList products={products} />}
+				{relatedProducts && <ProductList products={relatedProducts} />}
 			</div>
 		</DefaultLayout>
 	)

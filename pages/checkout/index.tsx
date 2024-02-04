@@ -9,32 +9,23 @@ const CheckoutPage = () => {
 	const [cartTotal, setCartTotal] = useState(0)
 	const [envioInterior, setEnvioInterior] = useState(false)
 
-	useEffect(() => {
-		const calcularTotalCarrito = (): number => {
-			let total = 0
-
-			productsInCart.forEach((producto: ProductInCard) => {
-				if (producto.quantity) {
-					total += producto.price * producto.quantity
-				}
-			})
-
-			return total
-		}
-		setCartTotal(calcularTotalCarrito())
-	}, [productsInCart])
-
 	const calcularTotalCarrito = (carrito: ProductInCard[]): number => {
 		let total = 0
 
 		carrito.forEach((producto) => {
 			if (producto.quantity) {
-				total += producto.price * producto.quantity
+				total += producto.precio * producto.quantity
 			}
 		})
 
 		return total
 	}
+
+	useEffect(() => {
+		setCartTotal(calcularTotalCarrito(productsInCart))
+	}, [productsInCart])
+
+
 
 	const generarMensajeWhatsApp = (
 		nombreCliente: string,
@@ -154,9 +145,9 @@ const CheckoutPage = () => {
 							<li
 								className="flex justify-between items-center"
 								key={product.id}>
-								<p>{product.title}</p>
+								<p>{product.nombre}</p>
 								<p>
-									{(product.price * product.quantity!).toLocaleString("es-AR", {
+									{(product.precio * product.quantity!).toLocaleString("es-AR", {
 										style: "currency",
 										currency: "ARS",
 									})}

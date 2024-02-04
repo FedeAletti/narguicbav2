@@ -8,8 +8,6 @@ const CartContextProvider = ({ children }) => {
 	// Logica
 	const [cart, setCart] = useState([])
 
-	console.log(cart);
-
 	// Validar si está el item en el carrito
 	const isInCart = (id) => cart.find((producto) => producto.id === id)
 

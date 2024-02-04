@@ -6,14 +6,14 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 export interface Product {
     id:          string;
-    imagen:      string;
     nombre:      string;
-    categoria:   string;
-    descripcion: string;
-    marca:       string;
-    precio:      number;
+    imagen:      string;
     stock:       number;
+    precio:      number;
     descuento:   number;
+    descripcion: string;
+    categoria:   string;
+    marca:       string;
 }
 
 
