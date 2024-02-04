@@ -1,4 +1,4 @@
-import { getProducts } from "@/service/products"
+import { api } from "@/pages/api/products"
 import { Product } from "@/types"
 import React, { createContext, useContext, useEffect, useState } from "react"
 
@@ -11,47 +11,53 @@ const ProductsContextProvider = ({
 }: {
 	children: React.ReactNode
 }) => {
-	const [products, setProducts] = useState<any[] | null>(null)
-
+	const [products, setProducts] = useState<Product[] | null>(null)
 	const [filteredProducts, setFilteredProducts] = useState<Product[] | null>(
 		null
 	)
 	const [categories, setCategories] = useState<any>([])
 	const [loaded, setLoaded] = useState(false)
 
-	const filterProducts = (category: string) => {
-		if (category === "all") {
+	const filterProducts = (category: string, prods: Product[] | null = null) => {
+		if (prods) {
 			setFilteredProducts(products)
-		} else {
-			setFilteredProducts(
-				products!.filter((product) => product.category.name === category)
-			)
+			return
 		}
 
-		console.log(products)
+		if (category === "all") {
+			setFilteredProducts(products)
+		} else if (category !== "ofertas") {
+			setFilteredProducts(
+				products!.filter((product) => product.categoria === category)
+			)
+		} else {
+			setFilteredProducts(
+				products!.filter((producto) => producto.descuento > 0)
+			)
+		}
 	}
 
 	useEffect(() => {
-		if (!loaded) {
-			getProducts()
-				.then((data) => {
-					console.log("Fetched products:", data.productWithCategories) // Add this line to log the fetched data
-					setProducts(data.productWithCategories as any[])
-					setCategories(data.categories)
-					setLoaded(true) // Change this to true after products are loaded
-				})
-				.catch((error) => {
-					console.error("Failed to fetch products:", error) // Add error handling
-				})
-		}
-	}, [loaded])
+		api.list().then((data: Product[]) => {
+			setProducts(data)
+			const categorias: string[] = []
+
+			data.forEach((producto) => {
+				// Verificar si la categoría ya está en el array
+				if (!categorias.includes(producto.categoria)) {
+					// Agregar la categoría al array
+					categorias.push(producto.categoria)
+				}
+			})
+			setCategories(categorias)
+		})
+	}, [])
 
 	return (
 		<ProductsContext.Provider
-			value={{ products, categories, filteredProducts, filterProducts }}>
+			value={{ products, categories, filterProducts, filteredProducts }}>
 			{children}
 		</ProductsContext.Provider>
 	)
 }
-
 export default ProductsContextProvider

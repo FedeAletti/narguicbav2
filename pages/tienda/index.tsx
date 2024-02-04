@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react"
 const TiendaPage = () => {
 	const [productsToRender, setProductsToRender] = useState([] as Product[])
 	const [category, setCategory] = useState("")
-	const { categories, products, filterProducts, filteredProducts } =
+	const { categories, products, filteredProducts, filterProducts } =
 		useProductsContext()
 
 	useEffect(() => {
@@ -19,17 +19,16 @@ const TiendaPage = () => {
 		} else {
 			setProductsToRender(filteredProducts)
 		}
-		console.log(productsToRender)
 	}, [products, filteredProducts, category])
 
 	const handleFilter = (category: any) => {
-		setCategory(category.title)
-		filterProducts(category.name)
+		setCategory(category)
+		filterProducts(category)
 	}
 
 	return (
 		<DefaultLayout>
-			{filterProducts && (
+			{productsToRender && (
 				<>
 					<section className="my-10 flex flex-wrap items-center justify-center px-5">
 						<a href="#productos">
@@ -40,21 +39,33 @@ const TiendaPage = () => {
 								background="bg-gradient-to-l from-orange-600 to-red-400"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter({ name: "narguilas", title: "Narguilas" })}>
+						<a
+							href="#productos"
+							onClick={() =>
+								handleFilter({ name: "narguilas", title: "Narguilas" })
+							}>
 							<ProductCategory
 								title="Narguilas"
 								subtitle="Concé nuestro catálogo"
 								thumbnail="/productos/narguila/nargui-1.png"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter({ name: "tabacos", title: "Tabacos" })}>
+						<a
+							href="#productos"
+							onClick={() =>
+								handleFilter({ name: "tabacos", title: "Tabacos" })
+							}>
 							<ProductCategory
 								title="Tabacos"
 								subtitle="La mayor variedad del país"
 								thumbnail="/productos/tabaco/adalya-bluemelon.png"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter({ name: "accesorios", title: "Accesorios" })}>
+						<a
+							href="#productos"
+							onClick={() =>
+								handleFilter({ name: "accesorios", title: "Accesorios" })
+							}>
 							<ProductCategory
 								title="Accesorios"
 								subtitle="Todo lo que necesitas"
@@ -75,25 +86,28 @@ const TiendaPage = () => {
 							<div className="sticky top-[3.9rem] w-full py-5 z-50 flex items-center gap-5 justify-center flex-wrap bg-primary/80">
 								{category !== "" && (
 									<Button
-										onClick={() =>
-											handleFilter({ name: "all", title: "", id: "" })
-										}
+										onClick={() => handleFilter("")}
 										className="bg-primary shadow-lg shadow-purple-900 border-b-1">
 										Todos
 									</Button>
 								)}
-								<Button onClick={() => handleFilter({ name: "ofertas", title: "Ofertas" })} className="bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg shadow-purple-700">
+								<Button
+									onClick={() => handleFilter("ofertas")}
+									className={`bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg shadow-purple-700 ${
+										category === "ofertas" &&
+										"bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg border-1"
+									}`}>
 									Ofertas
 								</Button>
-								{categories.map((categoryBtn: any) => (
+								{categories.map((categoryBtn: any, index: number) => (
 									<Button
-										key={categoryBtn.id}
+										key={`${index}-${categoryBtn}`}
 										onClick={() => handleFilter(categoryBtn)}
-										className={`bg-primary shadow-lg shadow-purple-900 border-b-1 ${
-											categoryBtn.title === category &&
+										className={`bg-primary shadow-lg capitalize  shadow-purple-900 border-b-1 ${
+											categoryBtn === category &&
 											"bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg border-1"
 										}`}>
-										{categoryBtn.title}
+										{categoryBtn}
 									</Button>
 								))}
 							</div>

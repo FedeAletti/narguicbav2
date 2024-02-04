@@ -41,7 +41,7 @@ const NosotrosPage = () => {
 			</article>
 
 			<section className="min-h-screen py-5 space-y-5 px-3 mx-auto w-[90%]">
-				<h5 className={`${courage.className} text-lg`}>
+				{/* <h5 className={`${courage.className} text-lg`}>
 					Que es una narguila ❓
 				</h5>
 				<p>
@@ -60,7 +60,7 @@ const NosotrosPage = () => {
 					de la narguila y pasan a una o más mangueras por las que los
 					consumidores inhalan antes de pasarla a la siguiente persona del
 					grupo.
-				</p>
+				</p> */}
 			</section>
 		</DefaultLayout>
 	)

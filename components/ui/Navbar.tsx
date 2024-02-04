@@ -99,7 +99,7 @@ export function NavBar() {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link href="/cart" className="relative">
+					<Link href="/carrito" className="relative">
 						<CartIcon />
 						{cartCount > 0 && (
 							<small className="absolute top-[-10px] left-[-10px] text-white font-semibold bg-purple-600 rounded-full px-2">

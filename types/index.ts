@@ -4,18 +4,18 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 	size?: number
 }
 
-export type Product = {
-	id: string
-	name: string
-	description: string
-	thumbnail: string
-	brand: string
-	price: number
-	category: Category
-	stock: number
-	isAvailable: boolean
-	discount?: number
+export interface Product {
+    id:          string;
+    nombre:      string;
+    imagen:      string;
+    stock:       number;
+    precio:      number;
+    descuento:   number;
+    descripcion: string;
+    categoria:   string;
+    marca:       string;
 }
+
 
 export type ProductInCard = Product & {
 	[key: string]: any

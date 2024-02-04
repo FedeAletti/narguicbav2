@@ -7,6 +7,7 @@ import { Product } from "@/types"
 import { useCartContext } from "@/context/CartContext"
 import { useRouter } from "next/router"
 import { successToast } from "@/utils/toasts"
+import { aplicarDescuento } from "@/utils/prices"
 
 const cardVariants: Variants = {
 	offscreen: {
@@ -50,6 +51,9 @@ export const ProductDetail = ({
 	const [quantity, setQuantity] = useState(productQuantity || 1)
 
 	const { addToCart, deleteFromCart } = useCartContext()
+	const [addedCart, setAddedCart] = useState(false)
+
+	const router = useRouter()
 
 	const handleQuantity = (qty: number) => {
 		setQuantity(qty)
@@ -57,8 +61,13 @@ export const ProductDetail = ({
 
 	const handleAdd = () => {
 		addToCart(product, quantity)
-		successToast(`Agregaste ${quantity} ${quantity > 1 ? `${product.category}s` : `${product.category}`} al carrito`)
+		successToast(
+			`Agregaste ${quantity} ${
+				quantity > 1 ? "productos" : "producto"
+			} al carrito`
+		)
 		setQuantity(1)
+		setAddedCart(true)
 	}
 
 	return (
@@ -78,8 +87,8 @@ export const ProductDetail = ({
 					className="absolute left-1 top-[25%] xl:top-[4%]">
 					<Image
 						className="w-full/2 overflow-visible"
-						src={product.thumbnail}
-						alt={product.name}
+						src={product.imagen}
+						alt={product.nombre}
 					/>
 				</motion.div>
 			</motion.div>
@@ -93,35 +102,62 @@ export const ProductDetail = ({
 							<div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 bg-[radial-gradient(black,_transparent_60%)] rotate-[0,_0,_1,_20deg] [scale3d(1,_0.6,_1)] opacity-[0.2]"></div>
 							<Image
 								className="relative w-full object-cover top-0 "
-								src={product.thumbnail}
+								src={product.imagen}
 								alt=""
 							/>
 						</div>
 					</div>
 				)}
 				<div className="py-5 px-5">
-					<h2 className=" text-3xl font-bold">{product.name}</h2>
+					<div>
+						<h2 className=" text-3xl font-bold">{product.nombre}</h2>
+						{product.descuento > 0 && (
+							<span className="absolute top-5 right-5 z-50">
+								<span className="relative inline-block overflow-hidden rounded-full p-[1px]">
+									<span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#21cc61_0%,#393BB2_50%,#21cc61_100%)]" />
+									<div className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-green-700 px-3 py-1 text-sm font-bold text-white backdrop-blur-3xl">
+										% {product.descuento} OFF!
+									</div>
+								</span>
+							</span>
+						)}
+					</div>
 					<p className={`max-w-sm ${fromCart && "hidden"}`}>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-						atque sed expedita ullam error commodi, voluptas ex aperiam
-						recusandae sunt soluta reprehenderit quod cupiditate enim pariatur
-						quidem dolore odio adipisci?
+						{product.descripcion || ""}
 					</p>
 					<div className="mt-5 flex flex-row justify-between items-center">
-						<div className="bg-white border-2 rounded-full border-green-500 text-green-500 w-32 text-center px-1 py-2 font-bold">
-							<span>
-								{(product.price * quantity).toLocaleString("es-AR", {
-									style: "currency",
-									currency: "ARS",
-								})}
-							</span>
+						<div className="flex flex-col justify-center items-center md:items-start md:justify-start w-full lg:flex-row gap-2 flex-wrap">
+							{product.descuento > 0 && (
+								<div className="bg-white border-2 rounded-full disabled text-gray-400 line-through w-32 scale-80 text-center px-1 py-2 font-bold">
+									<span>
+										{(product.precio * quantity).toLocaleString("es-AR", {
+											style: "currency",
+											currency: "ARS",
+										})}
+									</span>
+								</div>
+							)}
+							<div className="bg-white border-2 rounded-full border-green-500 text-green-500 w-32 text-center px-1 py-2 font-bold">
+								<span>
+									{aplicarDescuento(
+										product.precio,
+										product.descuento
+									).toLocaleString("es-AR", {
+										style: "currency",
+										currency: "ARS",
+										maximumFractionDigits: 2,
+									})}
+								</span>
+							</div>
 						</div>
-						<ItemCount
-							onAdd={handleQuantity}
-							stock={10}
-							qty={quantity}
-							id={product.id}
-						/>
+						{!fromCart && (
+							<ItemCount
+								onAdd={handleQuantity}
+								stock={10}
+								qty={quantity}
+								id={product.id}
+							/>
+						)}
 						{fromCart && (
 							<Button
 								isIconOnly
@@ -132,11 +168,28 @@ export const ProductDetail = ({
 							</Button>
 						)}
 					</div>
-					<Button
-						onClick={handleAdd}
-						className="bg-gradient-to-br from-purple-900 via-purple-900 to-violet-900  border-1 w-full mt-2">
-						Agregar
-					</Button>
+					{!fromCart && addedCart ? (
+						<>
+							<Button
+								onClick={() => router.push("/tienda")}
+								className="bg-gradient-to-br from-purple-900 via-purple-900 to-violet-900  border-1 w-full mt-2">
+								Seguir Comprando
+							</Button>
+							<Button
+								onClick={() => router.push("/carrito")}
+								className="bg-gradient-to-br from-purple-900 via-purple-900 to-violet-900  border-1 w-full mt-2">
+								Ir al Carrito
+							</Button>
+						</>
+					) : (
+						!fromCart && (
+							<Button
+								onClick={handleAdd}
+								className="bg-gradient-to-br from-purple-900 via-purple-900 to-violet-900  border-1 w-full mt-2">
+								Agregar
+							</Button>
+						)
+					)}
 				</div>
 			</div>
 		</article>

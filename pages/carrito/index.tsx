@@ -16,7 +16,7 @@ const CartPage = () => {
 
 			productsInCart.forEach((producto: ProductInCard) => {
 				if (producto.quantity) {
-					total += producto.price * producto.quantity
+					total += producto.precio * producto.quantity
 				}
 			})
 
@@ -39,9 +39,9 @@ const CartPage = () => {
 								<li
 									className="flex justify-between items-center"
 									key={product.id}>
-									<p>{product.title}</p>
+									<p>{product.nombre}</p>
 									<p>
-										{(product.price * product.quantity!).toLocaleString(
+										{(product.precio * product.quantity!).toLocaleString(
 											"es-AR",
 											{
 												style: "currency",
