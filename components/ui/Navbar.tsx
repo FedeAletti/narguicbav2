@@ -15,7 +15,7 @@ import {
 import { CartIcon, ProfileIcon } from "../icons"
 import { LOGO_URL } from "@/constants"
 import { useCartContext } from "@/context/CartContext"
-import { ProductInCard } from "@/types"
+import { ProductInCart } from "@/types"
 
 export function NavBar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -49,7 +49,7 @@ export function NavBar() {
 
 	useEffect(() => {
 		let sumaQuantity = 0
-		cart.forEach((producto: ProductInCard) => {
+		cart.forEach((producto: ProductInCart) => {
 			// Sumamos la propiedad 'quantity' de cada objeto al total
 			sumaQuantity += producto.quantity!
 		})

@@ -1,7 +1,8 @@
 import { CartList } from "@/components/Products/Cart/CartList"
 import { useCartContext } from "@/context/CartContext"
 import DefaultLayout from "@/layouts/default"
-import { ProductInCard } from "@/types"
+import { ProductInCart } from "@/types"
+import { aplicarDescuento } from "@/utils/prices"
 import { Button, ButtonGroup, Divider } from "@nextui-org/react"
 import Link from "next/link"
 import React, { useEffect, useState } from "react"
@@ -14,9 +15,9 @@ const CartPage = () => {
 		const calcularTotalCarrito = (): number => {
 			let total = 0
 
-			productsInCart.forEach((producto: ProductInCard) => {
+			productsInCart.forEach((producto: ProductInCart) => {
 				if (producto.quantity) {
-					total += producto.precio * producto.quantity
+					total += aplicarDescuento(producto.precio, producto.descuento) * producto.quantity
 				}
 			})
 
@@ -35,19 +36,19 @@ const CartPage = () => {
 				{productsInCart.length > 0 && (
 					<div className="col-span-12 md:col-span-4 bg-transparent border-2 border-primary-600 rounded-xl h-[55vh] flex flex-col justify-between py-8">
 						<ul className="py-4 px-5 space-y-5 ">
-							{productsInCart.map((product: ProductInCard) => (
+							{productsInCart.map((product: ProductInCart) => (
 								<li
 									className="flex justify-between items-center"
 									key={product.id}>
 									<p>{product.nombre}</p>
 									<p>
-										{(product.precio * product.quantity!).toLocaleString(
-											"es-AR",
-											{
-												style: "currency",
-												currency: "ARS",
-											}
-										)}
+										{(
+											aplicarDescuento(product.precio, product.descuento) *
+											product.quantity!
+										).toLocaleString("es-AR", {
+											style: "currency",
+											currency: "ARS",
+										})}
 									</p>
 								</li>
 							))}

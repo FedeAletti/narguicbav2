@@ -31,7 +31,7 @@ const TiendaPage = () => {
 			{productsToRender && (
 				<>
 					<section className="my-10 flex flex-wrap items-center justify-center px-5">
-						<a href="#productos">
+						<a href="#productos" onClick={() => handleFilter("ofertas")}>
 							<ProductCategory
 								title="OFERTAS"
 								subtitle="Mirá los productos en oferta 🔥"
@@ -42,7 +42,7 @@ const TiendaPage = () => {
 						<a
 							href="#productos"
 							onClick={() =>
-								handleFilter({ name: "narguilas", title: "Narguilas" })
+								handleFilter("narguilas")
 							}>
 							<ProductCategory
 								title="Narguilas"
@@ -53,7 +53,7 @@ const TiendaPage = () => {
 						<a
 							href="#productos"
 							onClick={() =>
-								handleFilter({ name: "tabacos", title: "Tabacos" })
+								handleFilter("tabacos")
 							}>
 							<ProductCategory
 								title="Tabacos"
@@ -64,7 +64,7 @@ const TiendaPage = () => {
 						<a
 							href="#productos"
 							onClick={() =>
-								handleFilter({ name: "accesorios", title: "Accesorios" })
+								handleFilter("accesorios")
 							}>
 							<ProductCategory
 								title="Accesorios"
