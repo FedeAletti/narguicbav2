@@ -1,22 +1,63 @@
 import { useCartContext } from "@/context/CartContext"
 import DefaultLayout from "@/layouts/default"
-import { ProductInCard } from "@/types"
+import { createOrder } from "@/service/products"
+import { ProductInCart } from "@/types"
+import { aplicarDescuento } from "@/utils/prices"
 import { Button, Divider, Input, Switch, cn } from "@nextui-org/react"
-import React, { useEffect, useState } from "react"
+import React, { ChangeEvent, useEffect, useState } from "react"
+import Swal from "sweetalert2"
+
+interface Comprador {
+	envioAlInterior: boolean
+	nombre: string
+	apellido: string
+	documento: string
+	telefono: string
+	calle: string
+	entrecalles: string
+	barrio: string
+	email?: string
+	ciudad?: string
+	provincia?: string
+	codigoPostal?: string
+}
 
 const CheckoutPage = () => {
 	const { cart: productsInCart, deleteCart } = useCartContext()
 	const [cartTotal, setCartTotal] = useState(0)
 	const [envioInterior, setEnvioInterior] = useState(false)
 
-	const calcularTotalCarrito = (carrito: ProductInCard[]): number => {
+	const [comprador, setComprador] = useState<any>({
+		envioAlInterior: envioInterior,
+		nombre: "",
+		apellido: "",
+		documento: "",
+		telefono: "",
+		calle: "",
+		entrecalles: "",
+		barrio: "",
+		email: "",
+		ciudad: "",
+		provincia: "",
+		codigoPostal: "",
+	})
+
+	const precioEnvío = 2600
+
+	const calcularTotalCarrito = (carrito: ProductInCart[]): number => {
 		let total = 0
 
 		carrito.forEach((producto) => {
 			if (producto.quantity) {
-				total += producto.precio * producto.quantity
+				total +=
+					aplicarDescuento(producto.precio, producto.descuento) *
+					producto.quantity
 			}
 		})
+
+		if (envioInterior) {
+			total += precioEnvío
+		}
 
 		return total
 	}
@@ -25,31 +66,39 @@ const CheckoutPage = () => {
 		setCartTotal(calcularTotalCarrito(productsInCart))
 	}, [productsInCart])
 
-
-
-	const generarMensajeWhatsApp = (
-		nombreCliente: string,
-        direccion: string,
-		carrito: ProductInCard[]
-	): string => {
-		let mensaje = `Hola soy ${nombreCliente}, realicé un pedido por el sitio web:\n\n`
+	const generarMensajeWhatsApp = (carrito: ProductInCart[]): string => {
+		let mensaje = `Hola soy ${comprador.nombre} ${comprador.apellido}, realicé un pedido por el sitio web:\n\n`
 
 		carrito.forEach((producto) => {
 			if (producto.quantity) {
-				mensaje += `- *${producto.title}* - $${
-					producto.price * producto.quantity
+				mensaje += `- *${producto.nombre}* - $${
+					aplicarDescuento(producto.precio, producto.descuento) *
+					producto.quantity
 				}\n`
 			}
 		})
 
 		const totalCarrito = calcularTotalCarrito(carrito)
+		if (envioInterior) {
+			mensaje += `\*Envío al interior: $${precioEnvío} \n`
+		}
 		mensaje += `\n*TOTAL: $${totalCarrito}*\n`
 
-        mensaje += "\nMi dirección es " + direccion + "\n"
+		if (envioInterior) {
+			mensaje += `\nSoy de ${comprador.ciudad} - ${comprador.provincia}, CP: ${comprador.codigoPostal} \n`
+		} else {
+			mensaje +=
+				"\nMi dirección es " +
+				comprador.calle +
+				"\n-Barrio: " +
+				comprador.barrio +
+				"\n-Entrecalles: " +
+				comprador.entrecalles +
+				"\n"
+		}
+		// mensaje += "\n  \n"
 
-        // mensaje += "\n  \n"
-
-        mensaje += "\n_Espero tu respuesta para confirmar mi pedido_"
+		mensaje += "\n_Espero tu respuesta para confirmar mi pedido_"
 
 		// Reemplazar espacios y saltos de línea con sus respectivos códigos en URL
 		const mensajeParaWhatsApp = encodeURIComponent(mensaje)
@@ -57,13 +106,72 @@ const CheckoutPage = () => {
 		return mensajeParaWhatsApp
 	}
 
-	const handleCheckout = () => {
+	const handleCheckout = async () => {
+		if (
+			comprador.nombre === "" ||
+			comprador.apellido === "" ||
+			comprador.barrio === "" ||
+			comprador.calle === "" ||
+			comprador.entrecalles === "" ||
+			comprador.telefono === "" ||
+			comprador.documento === ""
+		) {
+			if (envioInterior) {
+				if (
+					comprador.email === "" ||
+					comprador.ciudad === "" ||
+					comprador.provincia === "" ||
+					comprador.codigoPostal === ""
+				) {
+					Swal.fire({
+						icon: "error",
+						title: "Llene todos los campos!",
+						text: "Al parecer hay campos vacíos, por favor revisar.",
+					})
+					return
+				}
+			}
+			alert(
+				"Por favor, complete todos los campos antes de realizar el checkout."
+			)
+			return
+		}
+
 		const urlBase =
-			"https://wa.me/+5493513705773" +
+			// "https://wa.me/+5493513705773" +
+			"https://wa.me/+5493424388638" +
 			"?text=" +
-			generarMensajeWhatsApp("Pepito", "Soldado Ruiz 2657 - Barrio San Martín", productsInCart)
-		
-        window.open(urlBase, "_blank")
+			generarMensajeWhatsApp(productsInCart)
+
+		if (productsInCart.length === 0) {
+			Swal.fire({
+				icon: "error",
+				title: "No hay productos en el carrito!",
+				text: "Por favor, agregue productos antes de realizar el checkout.",
+			})
+			return
+		}
+		await createOrder(comprador, productsInCart, cartTotal)
+		window.open(urlBase, "_blank")
+	}
+
+	const handleInputChange = (
+		e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
+		const { name, value } = e.target
+
+		setComprador((prevComprador: any) => ({
+			...prevComprador,
+			[name]: value,
+		}))
+	}
+
+	const handleCheckboxChange = () => {
+		setEnvioInterior(!envioInterior)
+		setComprador((prevComprador: any) => ({
+			...prevComprador,
+			envioAlInterior: !envioInterior,
+		}))
 	}
 
 	return (
@@ -72,7 +180,7 @@ const CheckoutPage = () => {
 				<form className="col-span-12 md:col-span-7 px-5 space-y-5 items-center">
 					<Switch
 						isSelected={envioInterior}
-						onClick={() => setEnvioInterior(!envioInterior)}
+						onClick={handleCheckboxChange}
 						classNames={{
 							base: cn(
 								"inline-flex flex-row-reverse w-full mx-auto max-w-md bg-content1 hover:bg-content2 items-center",
@@ -103,51 +211,145 @@ const CheckoutPage = () => {
 					{envioInterior ? (
 						<>
 							<div className="flex gap-4">
-								<Input type="text" label="Nombre" />
-								<Input type="text" label="Apellido" />
+								<Input
+									type="text"
+									label="Nombre"
+									name="nombre"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Apellido"
+									name="apellido"
+									onChange={handleInputChange}
+								/>
 							</div>
-							<Input type="email" label="Email" />
+							<Input
+								type="email"
+								label="Email"
+								name="email"
+								onChange={handleInputChange}
+							/>
 							<div className="flex gap-4">
-								<Input type="number" label="Documento" />
-								<Input type="text" label="Teléfono" />
+								<Input
+									type="number"
+									label="Documento"
+									name="documento"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Teléfono"
+									name="telefono"
+									onChange={handleInputChange}
+								/>
 							</div>
 							<div className="flex gap-4">
-								<Input type="text" label="Ciudad" />
-								<Input type="text" label="Código postal" />
+								<Input
+									type="text"
+									label="Ciudad"
+									name="ciudad"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Código postal"
+									name="codigoPostal"
+									onChange={handleInputChange}
+								/>
 							</div>
+							<Input
+								type="text"
+								label="Provincia"
+								name="provincia"
+								onChange={handleInputChange}
+							/>
 							<div className="flex gap-4">
-								<Input type="text" label="Calle" />
-								<Input type="text" label="Entre calles" />
+								<Input
+									type="text"
+									label="Calle y Número"
+									name="calle"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Entre calles"
+									name="entrecalles"
+									onChange={handleInputChange}
+								/>
 							</div>
-							<Input type="text" label="Barrio" />
+							<Input
+								type="text"
+								label="Barrio"
+								name="barrio"
+								onChange={handleInputChange}
+							/>
 						</>
 					) : (
 						<>
 							<div className="flex gap-4">
-								<Input type="text" label="Nombre" />
-								<Input type="text" label="Apellido" />
+								<Input
+									type="text"
+									label="Nombre"
+									name="nombre"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Apellido"
+									name="apellido"
+									onChange={handleInputChange}
+								/>
 							</div>
 							<div className="flex gap-4">
-								<Input type="number" label="Documento" />
-								<Input type="text" label="Teléfono" />
+								<Input
+									type="number"
+									label="Documento"
+									name="documento"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Teléfono"
+									name="telefono"
+									onChange={handleInputChange}
+								/>
 							</div>
 							<div className="flex gap-4">
-								<Input type="text" label="Calle" />
-								<Input type="text" label="Entre calles" />
+								<Input
+									type="text"
+									label="Calle"
+									name="calle"
+									onChange={handleInputChange}
+								/>
+								<Input
+									type="text"
+									label="Entre calles"
+									name="entrecalles"
+									onChange={handleInputChange}
+								/>
 							</div>
-							<Input type="text" label="Barrio" />
+							<Input
+								type="text"
+								label="Barrio"
+								name="barrio"
+								onChange={handleInputChange}
+							/>
 						</>
 					)}
 				</form>
 				<div className="col-span-12 md:col-span-4 bg-transparent border-2 border-primary-600 w-full rounded-xl h-[55vh] flex flex-col justify-between py-8">
 					<ul className="py-4 px-5 space-y-5 ">
-						{productsInCart.map((product: ProductInCard) => (
+						{productsInCart.map((product: ProductInCart) => (
 							<li
 								className="flex justify-between items-center"
 								key={product.id}>
 								<p>{product.nombre}</p>
 								<p>
-									{(product.precio * product.quantity!).toLocaleString("es-AR", {
+									{(
+										aplicarDescuento(product.precio, product.descuento) *
+										product.quantity!
+									).toLocaleString("es-AR", {
 										style: "currency",
 										currency: "ARS",
 									})}
@@ -155,6 +357,17 @@ const CheckoutPage = () => {
 							</li>
 						))}
 						<Divider />
+						{envioInterior && (
+							<li className="flex justify-between items-center">
+								<p>Envío</p>
+								<p>
+									{precioEnvío.toLocaleString("es-AR", {
+										style: "currency",
+										currency: "ARS",
+									})}
+								</p>
+							</li>
+						)}
 						<li className="font-bold flex justify-between items-center">
 							<p>Total</p>
 							<p>
@@ -182,17 +395,3 @@ const CheckoutPage = () => {
 }
 
 export default CheckoutPage
-
-/*
-
-Nombre 
-Apellido 
-Dni 
-Teléfono 
-Cuidad 
-Codigo postal
-Calle 
-Entre calles 
-Barrio 
-Mail
-*/

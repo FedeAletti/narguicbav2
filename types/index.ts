@@ -17,7 +17,7 @@ export interface Product {
 }
 
 
-export type ProductInCard = Product & {
+export type ProductInCart = Product & {
 	[key: string]: any
 	quantity?: number
 }

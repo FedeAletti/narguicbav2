@@ -1,4 +1,4 @@
-import { ProductInCard } from "@/types"
+import { ProductInCart } from "@/types"
 import React from "react"
 import { useCartContext } from "@/context/CartContext"
 import { ProductDetail } from "../ProductDetail"
@@ -10,7 +10,7 @@ export const CartList = () => {
 	return (
 		<>
 			{products.length > 0 ? (
-				products.map((product: ProductInCard) => (
+				products.map((product: ProductInCart) => (
 					<ProductDetail
 						key={product.id}
 						product={product}
