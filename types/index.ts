@@ -5,17 +5,16 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 }
 
 export interface Product {
-    id:          string;
-    nombre:      string;
-    imagen:      string;
-    stock:       number;
-    precio:      number;
-    descuento:   number;
-    descripcion: string;
-    categoria:   string;
-    marca:       string;
+	id: string
+	nombre: string
+	imagen: string
+	stock: number
+	precio: number
+	descuento: number
+	descripcion: string
+	categoria: string
+	marca: string
 }
-
 
 export type ProductInCart = Product & {
 	[key: string]: any
@@ -73,9 +72,49 @@ export interface Addresses {
 }
 
 export interface Comment {
-	id: string 
+	id: string
 	title: string
 	description: string
 	date: Date
 	rate: number
 }
+
+// ORDEN
+
+export interface Pedido {
+	id: string
+	productos: Producto[]
+	estado: string
+	total: number
+	comprador: Comprador
+	envioAlInterior: boolean
+}
+
+export interface Comprador {
+	apellido: string
+	calle?: string
+	barrio?: string
+	ciudad?: string
+	nombre: string
+	documento?: string
+	codigoPostal?: string
+	email?: string
+	provincia?: string
+	entrecalles?: string
+	envioAlInterior: boolean
+	telefono: string
+}
+
+export interface Producto {
+	descuento: number
+	descripcion: string
+	nombre: string
+	marca: string
+	quantity: number
+	categoria: string
+	stock: number
+	imagen: string
+	id: string
+	precio: number
+}
+

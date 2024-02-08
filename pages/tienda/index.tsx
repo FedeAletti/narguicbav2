@@ -47,7 +47,7 @@ const TiendaPage = () => {
 							<ProductCategory
 								title="Narguilas"
 								subtitle="Concé nuestro catálogo"
-								thumbnail="/productos/narguila/nargui-1.png"
+								thumbnail="/productos/oferta/narguis-category.png"
 							/>
 						</a>
 						<a
@@ -58,7 +58,7 @@ const TiendaPage = () => {
 							<ProductCategory
 								title="Tabacos"
 								subtitle="La mayor variedad del país"
-								thumbnail="/productos/tabaco/adalya-bluemelon.png"
+								thumbnail="/productos/oferta/tabacos-category.png"
 							/>
 						</a>
 						<a
@@ -69,7 +69,7 @@ const TiendaPage = () => {
 							<ProductCategory
 								title="Accesorios"
 								subtitle="Todo lo que necesitas"
-								thumbnail="/productos/accesorio/kaloud.png"
+								thumbnail="/productos/oferta/accesorios-category.png"
 							/>
 						</a>
 					</section>
