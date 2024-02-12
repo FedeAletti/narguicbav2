@@ -6,6 +6,7 @@ import { courage } from "@/config/fonts"
 import { Image } from "@nextui-org/react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
 import { useWindowSize } from "@/utils/window"
+import { Card, Carousel } from "flowbite-react"
 
 const EventosPage = () => {
 	const [selectedId, setSelectedId] = useState(null)
@@ -49,7 +50,7 @@ const EventosPage = () => {
 						</p>
 						<a
 							href="https://wa.link/uvtlgm"
-							className="inline-flex	w-full h-12 animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+							className="inline-flex	w-full h-16 text-center animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
 							Quiero contratar a Nargui CBA para mi evento
 						</a>
 					</div>
@@ -111,54 +112,64 @@ const EventosPage = () => {
 				</div>
 			</article>
 
-			{selectedId && (
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					className="absolute inset-0 bg-black/75 z-40 h-[200vh] w-sceen blur"
-				/>
-			)}
-			<AnimatePresence mode="popLayout" presenceAffectsLayout initial={false}>
-				{selectedId && (
-					<>
-						<motion.div
-							layoutId={selectedId}
-							key={selectedId}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							onClick={() => setSelectedId(null)}
-							className="absolute z-50 top-48 right-[10vw] w-[60vw] h-[20vh]">
-							<Image
-								className="object-cover object-center rounded-xl  scale-80"
-								src={`/eventos/${selectedId}.jpeg`}
-								alt="Imagen en evento"
-							/>
-						</motion.div>
-					</>
-				)}
-			</AnimatePresence>
+			<div className="w-screen">
+				<h3 className={`text-center my-20 text-2xl ${courage.className}`}>Participamos de eventos en estos lugares 👇🏻</h3>
+				<div className={styles.marquee}>
+					<ul className={styles.marquee__content}>
+						{Array.from({ length: 14 }).map((_, i) => (
+							<li key={i} className={styles.marquee__item}>
+								<Image
+									className="w-full min-w-500px object-contain object-center rounded-full"
+									src={`/eventos/logos/${i + 1}.jpeg`}
+									alt="Imagen en evento"
+									width={100}
+									height={100}
+								/>
+							</li>
+						))}
+						{Array.from({ length: 14 }).map((_, i) => (
+							<li key={i} className={styles.marquee__item}>
+								<Image
+									className="w-full h-[150px] object-contain object-center rounded-full"
+									src={`/eventos/logos/${i + 1}.jpeg`}
+									alt="Imagen en evento"
+									width={100}
+									height={100}
+								/>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
 
-			<section className="min-h-screen py-5 px-3 mx-auto">
-				<article className={styles.grid_gallery}>
+			<div className="h-[70vh] lg:h-[80vh] my-10 w-[90vw] mx-auto md:px-0">
+				{/* sm:h-64 xl:h-80 2xl:h-96  */}
+				<Carousel pauseOnHover indicators={false}>
 					{Array.from({ length: 14 }).map((_, i) => (
-						<motion.div
+						<img
 							key={i}
-							className={styles.grid_gallery__item}
-							layoutId={`${i + 1}`}
-							onClick={() => {
-								if (!isMobile) {
-									setSelectedId(`${i + 1}` as any)
-								} else null
-							}}>
-							<img
-								className={styles.grid_gallery__image}
-								src={`/eventos/${i + 1}.jpeg`}
-								alt="Imagen en evento"
-							/>
-						</motion.div>
+							className="w-full h-full object-contain object-center rounded-lg"
+							src={`/eventos/${i + 1}.jpeg`}
+							alt="Imagen en evento"
+						/>
 					))}
-				</article>
+				</Carousel>
+			</div>
+
+			<section className="max-w-[98vw] md:max-w-[80vw] min-h-screen py-5 mx-auto">
+				<div>
+					<article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-content-center gap-5">
+						{Array.from({ length: 14 }).map((_, i) => (
+							<motion.div key={i}>
+								<img
+									className="w-full h-full object-cover object-center rounded-lg"
+									src={`/eventos/${i + 1}.jpeg`}
+									alt="Imagen en evento"
+								/>
+							</motion.div>
+						))}
+					</article>
+				</div>
 			</section>
 		</DefaultLayout>
 	)
