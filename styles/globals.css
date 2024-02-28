@@ -26,6 +26,16 @@ html {
 	background: #6d6d6d;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 a {
 	@apply cursor-pointer;
 	@apply text-jaguar-600;
@@ -67,7 +77,7 @@ a:hover {
 }
 
 .category_card:hover {
-	box-shadow: 0px 0px 30px .23px #af40ff;
+	box-shadow: 0px 0px 30px 0.23px #af40ff;
 }
 
 /* BUTTONS */

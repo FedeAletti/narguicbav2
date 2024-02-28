@@ -64,13 +64,25 @@ export const Footer = () => {
 					<iframe
 						src="https://maps.google.com/maps?q=Soldado%20Ruiz%202657&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
 						className="w-[210px] h-[100px]"></iframe>
-					<p>Soldado Ruiz 2657 <br /> Barrio San Martin, CP: 5008</p>
+					<p>
+						Soldado Ruiz 2657 <br /> Barrio San Martin, CP: 5008
+					</p>
 				</div>
 			</article>
 
 			<h6 className="bg-black text-center w-full py-5">
-				© 2024. Narguilas Córdoba{" "}
+				© 2024 - Narguilas Córdoba{" "}
 			</h6>
+			<div className="bg-black text-center w-full py-1 text-xs font-semibold">
+				Developed by <br />
+				<a href="https://github.com/FedeAletti" target="_blank">
+					Federico Aletti
+				</a>{" "}
+				&{" "}
+				<a href="https://github.com/Lucioalconchel" target="_blank">
+					Lucio Alconchel
+				</a>
+			</div>
 		</footer>
 	)
 }

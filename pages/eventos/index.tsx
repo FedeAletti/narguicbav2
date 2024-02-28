@@ -48,9 +48,10 @@ const EventosPage = () => {
 							evento sea diferencial y que se convierta en una experiencia
 							única.
 						</p>
+
 						<a
 							href="https://wa.link/uvtlgm"
-							className="inline-flex	w-full h-16 text-center animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+							className="inline-flex	w-full h-16 text-center items-center justify-center rounded-md border border-slate-800 bg-gradient-to-r from-red-500 via-orange-600 to-orange-400 px-6 font-bold text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
 							Quiero contratar a Nargui CBA para mi evento
 						</a>
 					</div>
@@ -113,7 +114,9 @@ const EventosPage = () => {
 			</article>
 
 			<div className="w-screen">
-				<h3 className={`text-center my-20 text-2xl ${courage.className}`}>Participamos de eventos en estos lugares 👇🏻</h3>
+				<h3 className={`text-center my-20 text-2xl ${courage.className}`}>
+					Participamos de eventos en estos lugares 👇🏻
+				</h3>
 				<div className={styles.marquee}>
 					<ul className={styles.marquee__content}>
 						{Array.from({ length: 14 }).map((_, i) => (
@@ -145,7 +148,7 @@ const EventosPage = () => {
 			<div className="h-[70vh] lg:h-[80vh] my-10 w-[90vw] mx-auto md:px-0">
 				{/* sm:h-64 xl:h-80 2xl:h-96  */}
 				<Carousel pauseOnHover indicators={false}>
-					{Array.from({ length: 14 }).map((_, i) => (
+					{Array.from({ length: 15 }).map((_, i) => (
 						<img
 							key={i}
 							className="w-full h-full object-contain object-center rounded-lg"
@@ -159,7 +162,7 @@ const EventosPage = () => {
 			<section className="max-w-[98vw] md:max-w-[80vw] min-h-screen py-5 mx-auto">
 				<div>
 					<article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-content-center gap-5">
-						{Array.from({ length: 14 }).map((_, i) => (
+						{Array.from({ length: 15 }).map((_, i) => (
 							<motion.div key={i}>
 								<img
 									className="w-full h-full object-cover object-center rounded-lg"
