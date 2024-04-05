@@ -31,41 +31,29 @@ const TiendaPage = () => {
 			{productsToRender && (
 				<>
 					<section className="my-10 flex flex-wrap items-center justify-center px-5">
-						<a href="#productos" onClick={() => handleFilter("ofertas")}>
+						<a href="#productos" onClick={() => handleFilter("promociones")}>
 							<ProductCategory
-								title="OFERTAS"
-								subtitle="Mirá los productos en oferta 🔥"
+								title="PROMOCIONES"
+								subtitle="Mirá los productos en promo 🔥"
 								thumbnail="/productos/oferta/oferta-category.png"
 								background="bg-gradient-to-l from-orange-600 to-red-400"
 							/>
 						</a>
-						<a
-							href="#productos"
-							onClick={() =>
-								handleFilter("narguilas")
-							}>
+						<a href="#productos" onClick={() => handleFilter("narguilas")}>
 							<ProductCategory
 								title="Narguilas"
 								subtitle="Concé nuestro catálogo"
 								thumbnail="/productos/oferta/narguis-category.png"
 							/>
 						</a>
-						<a
-							href="#productos"
-							onClick={() =>
-								handleFilter("tabacos")
-							}>
+						<a href="#productos" onClick={() => handleFilter("tabacos")}>
 							<ProductCategory
 								title="Tabacos"
-								subtitle="La mayor variedad del país"
+								subtitle="Mejor variedad del país"
 								thumbnail="/productos/oferta/tabacos-category.png"
 							/>
 						</a>
-						<a
-							href="#productos"
-							onClick={() =>
-								handleFilter("accesorios")
-							}>
+						<a href="#productos" onClick={() => handleFilter("accesorios")}>
 							<ProductCategory
 								title="Accesorios"
 								subtitle="Todo lo que necesitas"
@@ -84,21 +72,15 @@ const TiendaPage = () => {
 						</h2>
 						<div className="relative">
 							<div className="sticky top-[3.9rem] w-full py-5 z-50 flex items-center gap-5 justify-center flex-wrap bg-primary/80">
-								{category !== "" && (
-									<Button
-										onClick={() => handleFilter("")}
-										className="bg-primary shadow-lg shadow-purple-900 border-b-1">
-										Todos
-									</Button>
-								)}
 								<Button
-									onClick={() => handleFilter("ofertas")}
-									className={`bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg shadow-purple-700 ${
-										category === "ofertas" &&
+									onClick={() => handleFilter("")}
+									className={`bg-primary shadow-lg shadow-purple-900 border-b-1 ${
+										category === "" &&
 										"bg-gradient-to-br from-purple-900 via-purple-900 to-black shadow-lg border-1"
 									}`}>
-									Ofertas
+									Todos
 								</Button>
+
 								{categories.map((categoryBtn: any, index: number) => (
 									<Button
 										key={`${index}-${categoryBtn}`}
@@ -110,6 +92,14 @@ const TiendaPage = () => {
 										{categoryBtn}
 									</Button>
 								))}
+
+								<Button
+									onClick={() => handleFilter("promociones")}
+									className={`bg-gradient-to-l from-orange-600 to-red-400 ${
+										category === "promociones" && "shadow-lg border-1"
+									}`}>
+									Promociones
+								</Button>
 							</div>
 						</div>
 						<ProductList products={productsToRender} />

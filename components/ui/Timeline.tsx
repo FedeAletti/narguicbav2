@@ -13,7 +13,7 @@ export function TimelineApp() {
 					<Timeline.Time>2024</Timeline.Time>
 					<Timeline.Title>¡Se acercan tiempos emocionantes!</Timeline.Title>
 					<Timeline.Body>
-						<p className="text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
+						<p className="text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-red-200 px-4 py-5 rounded-lg mt-4">
 							¡Se acercan tiempos emocionantes y todo esto sería imposible sin
 							ustedes! <br />
 							Desde el principio, hemos contado con su apoyo incondicional, es

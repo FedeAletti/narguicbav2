@@ -1,5 +1,6 @@
 import { Image, Link } from "@nextui-org/react"
 import React from "react"
+import { MapsIframe } from "./MapsIframe"
 
 const mediosPago = [
 	"visa",
@@ -16,15 +17,18 @@ export const Footer = () => {
 		<footer className="w-full mt-10 z-50 border-t-1 border-jaguar-700">
 			<article className="grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] place-content-center gap-8 px-5 py-6">
 				<ul className="mx-0 md:mx-auto">
+					<li>
+						<p className="text-lg font-bold mb-1">Contactanos</p>
+					</li>
 					<li className="mb-3">
 						<a
 							href="mailto:narguicba@gmail.com"
-							className="text-white hover:underline font-bold text-center w-full py-5">
-							Contactanos: <br /> narguicba@gmail.com
+							className="text-white underline underline-offset-2  font-medium text-center w-full py-5">
+							narguicba@gmail.com
 						</a>
 					</li>
-					<li>
-						<p className="text-lg font-bold mb-4">Navegación</p>
+					<li className="mb-1">
+						<p className="text-lg font-bold">Navegación</p>
 					</li>
 					<li>
 						<Link href="/tienda" className="text-white">
@@ -41,11 +45,11 @@ export const Footer = () => {
 							Eventos
 						</Link>
 					</li>
-					<li>
+					{/* <li>
 						<Link href="/blog" className="text-white">
 							Nuestra comunidad
 						</Link>
-					</li>
+					</li> */}
 				</ul>
 				<div className="min-h-[20vh]  mx-auto">
 					<p className="text-lg font-bold mb-4">Medios de Pago</p>
@@ -60,13 +64,9 @@ export const Footer = () => {
 						))}
 					</div>
 				</div>
-				<div className="mx-0 md:mx-auto">
-					<iframe
-						src="https://maps.google.com/maps?q=Soldado%20Ruiz%202657&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-						className="w-[210px] h-[100px]"></iframe>
-					<p>
-						Soldado Ruiz 2657 <br /> Barrio San Martin, CP: 5008
-					</p>
+				<div className="mx-0 md:mx-auto space-y-3">
+					<MapsIframe />
+					<p>Rafael Nuñez 4684 | Local 3</p>
 				</div>
 			</article>
 

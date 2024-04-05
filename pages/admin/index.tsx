@@ -68,7 +68,7 @@ const AdminPage = () => {
 											<b>DNI :</b> {pedido.comprador.documento}
 										</li>
 										<li className="border-b border-black">
-											<b>Calle :</b> {pedido.comprador.calle}
+											<b>Calle y Nro :</b> {pedido.comprador.calle}
 										</li>
 										<li className="border-b border-black">
 											<b>Entrecalles :</b> {pedido.comprador.entrecalles}

@@ -52,7 +52,7 @@ export const ProductCategory = ({
 				<div className="flex justify-between">
 					<span className="block font-semibold text-xl">{title}</span>
 					<span className="bg-white rounded-full text-purple-800 text-xs font-bold px-3 py-2 leading-none flex items-center">
-						Ir a {title.toLowerCase()}
+						Ir a {title === "PROMOCIONES" ? "promos" : title.toLowerCase()}
 					</span>
 				</div>
 			</div>

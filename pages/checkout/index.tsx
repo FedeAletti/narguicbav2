@@ -4,6 +4,7 @@ import { createOrder } from "@/service/products"
 import { ProductInCart } from "@/types"
 import { aplicarDescuento } from "@/utils/prices"
 import { Button, Divider, Input, Switch, cn } from "@nextui-org/react"
+import { useRouter } from "next/router"
 import React, { ChangeEvent, useEffect, useState } from "react"
 import Swal from "sweetalert2"
 
@@ -26,6 +27,8 @@ const CheckoutPage = () => {
 	const { cart: productsInCart, deleteCart } = useCartContext()
 	const [cartTotal, setCartTotal] = useState(0)
 	const [envioInterior, setEnvioInterior] = useState(false)
+
+	const router = useRouter()
 
 	const [comprador, setComprador] = useState<any>({
 		envioAlInterior: envioInterior,
@@ -64,6 +67,7 @@ const CheckoutPage = () => {
 
 	useEffect(() => {
 		setCartTotal(calcularTotalCarrito(productsInCart))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [productsInCart])
 
 	const generarMensajeWhatsApp = (carrito: ProductInCart[]): string => {
@@ -71,7 +75,7 @@ const CheckoutPage = () => {
 
 		carrito.forEach((producto) => {
 			if (producto.quantity) {
-				mensaje += `- *${producto.nombre}* - $${
+				mensaje += `- *${producto.quantity}x ${producto.nombre}* - $${
 					aplicarDescuento(producto.precio, producto.descuento) *
 					producto.quantity
 				}\n`
@@ -131,15 +135,16 @@ const CheckoutPage = () => {
 					return
 				}
 			}
-			alert(
-				"Por favor, complete todos los campos antes de realizar el checkout."
-			)
+			Swal.fire({
+				icon: "error",
+				title: "Llene todos los campos!",
+				text: "Al parecer hay campos vacíos, por favor revisar.",
+			})
 			return
 		}
 
 		const urlBase =
-			// "https://wa.me/+5493513705773" +
-			"https://wa.me/+5493424388638" +
+			"https://wa.me/+5493513153203" +
 			"?text=" +
 			generarMensajeWhatsApp(productsInCart)
 
@@ -153,6 +158,7 @@ const CheckoutPage = () => {
 		}
 		await createOrder(comprador, productsInCart, cartTotal)
 		window.open(urlBase, "_blank")
+		router.push("/")
 	}
 
 	const handleInputChange = (
@@ -318,7 +324,7 @@ const CheckoutPage = () => {
 							<div className="flex gap-4">
 								<Input
 									type="text"
-									label="Calle"
+									label="Calle y Nro"
 									name="calle"
 									onChange={handleInputChange}
 								/>

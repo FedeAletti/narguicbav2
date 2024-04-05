@@ -15,10 +15,10 @@ import { ExternalLinkIcon } from "@/components/icons"
 export function CTAGallery() {
 	return (
 		<ul className={`${styles.cards} group`}>
-			<Link href={"/tienda"} className={`${styles.card}`}>
+			<Link href={"/tienda"} className={`${styles.card} group`}>
 				<Image
 					src="https://i.ibb.co/vLmpJrn/accesories.jpg"
-					className={`${styles.card__image} z-0`}
+					className={`${styles.card__image} z-0 hover:scale-125 `}
 					alt=""
 				/>
 				<div className={styles.card__overlay}>
@@ -31,11 +31,11 @@ export function CTAGallery() {
 						<div className="flex justify-between w-full">
 							<div>
 								<p className="text-tiny text-white uppercase font-bold w-full">
-									Conocé nuestros productos
+									Nuestros productos
 								</p>
 
 								<h4 className="font-bold text-white text-lg uppercase">
-									La mayor variedad del país
+									Mejor variedad <br /> del país
 								</h4>
 							</div>
 							<div className="self-end bg-white p-3 rounded-full">
@@ -49,10 +49,10 @@ export function CTAGallery() {
 					</p>
 				</div>
 			</Link>
-			<Link href={"/eventos"} className={`${styles.card}`}>
+			<Link href={"/eventos"} className={`${styles.card} group`}>
 				<Image
 					src="/eventos/2.jpeg"
-					className={`${styles.card__image} z-0`}
+					className={`${styles.card__image} z-0 hover:scale-125`}
 					alt=""
 				/>
 				<div className={styles.card__overlay}>
@@ -72,7 +72,7 @@ export function CTAGallery() {
 									Estamos en tus celebraciones
 								</h4>
 							</div>
-							<div className="self-end bg-white p-2 rounded-full">
+							<div className="self-end bg-white p-3 rounded-full">
 								<ExternalLinkIcon className={``} />
 							</div>
 						</div>
@@ -83,10 +83,10 @@ export function CTAGallery() {
 					</p>
 				</div>
 			</Link>
-			<Link href={"/blog"} className={`${styles.card}`}>
+			<Link href={"/blog"} className={`${styles.card} group`}>
 				<Image
 					src="https://i.ibb.co/sp7fMW7/community.png"
-					className={`${styles.card__image} z-0`}
+					className={`${styles.card__image} z-0 hover:scale-125`}
 					alt=""
 				/>
 				<div className={styles.card__overlay}>

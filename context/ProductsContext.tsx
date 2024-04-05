@@ -26,7 +26,7 @@ const ProductsContextProvider = ({
 
 		if (category === "all") {
 			setFilteredProducts(products)
-		} else if (category !== "ofertas") {
+		} else if (category !== "promociones") {
 			setFilteredProducts(
 				products!.filter((product) => product.categoria === category)
 			)

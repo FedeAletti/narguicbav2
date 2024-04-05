@@ -7,9 +7,10 @@ type Props = {
 	onAdd: Function
 	id: string
 	qty?: number
+	className?: string
 }
 
-export const ItemCount = ({ stock, onAdd, id, qty = 1 }: Props) => {
+export const ItemCount = ({ stock, onAdd, id, qty = 1, className }: Props) => {
 	const [count, setCount] = useState(qty)
 
 	const handleRemove = () => {
@@ -31,7 +32,8 @@ export const ItemCount = ({ stock, onAdd, id, qty = 1 }: Props) => {
 	}, [qty])
 
 	return (
-		<div className="flex items-center justify-between gap-5 py-2 rounded-3xl bg-slate-200 px-2">
+		<div
+			className={`flex items-center md:w-auto justify-between gap-5 py-2 rounded-3xl bg-slate-200 px-2 ${className}`}>
 			<Button
 				variant="bordered"
 				size="sm"

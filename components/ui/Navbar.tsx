@@ -37,10 +37,10 @@ export function NavBar() {
 			label: "Nosotros",
 			href: "/nosotros",
 		},
-		{
-			label: "Blog",
-			href: "/blog",
-		},
+		// {
+		// 	label: "Blog",
+		// 	href: "/blog",
+		// },
 	]
 
 	const { cart } = useCartContext()
@@ -71,26 +71,13 @@ export function NavBar() {
 			</NavbarContent>
 
 			<NavbarContent className="hidden sm:flex gap-8" justify="center">
-				<NavbarItem>
-					<Link color="foreground" href="/tienda">
-						Tienda
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="/eventos">
-						Eventos
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="/nosotros">
-						Nosotros
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="/blog">
-						Blog
-					</Link>
-				</NavbarItem>
+				{menuItems.map((item, index) => (
+					<NavbarItem key={`${item}-${index}`}>
+						<Link color="foreground" href={item.href}>
+							{item.label}
+						</Link>
+					</NavbarItem>
+				))}
 			</NavbarContent>
 			<NavbarContent justify="end" className="flex gap-8">
 				<NavbarItem className="hidden">

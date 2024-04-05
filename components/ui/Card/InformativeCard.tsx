@@ -64,9 +64,7 @@ export const InformativeCard = ({
 				}}
 			/>
 			<h5 className={`${courage.className} text-lg`}>{title}</h5>
-			<p className="text-base text-slate-200">
-				{text}
-			</p>
+			<p className="text-base text-slate-200">{text}</p>
 		</div>
 	)
 }

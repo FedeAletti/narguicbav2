@@ -7,6 +7,7 @@ import { Image } from "@nextui-org/react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
 import { useWindowSize } from "@/utils/window"
 import { Card, Carousel } from "flowbite-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 const EventosPage = () => {
 	const [selectedId, setSelectedId] = useState(null)
@@ -24,7 +25,7 @@ const EventosPage = () => {
 					<div className="col-span-12 xl:col-span-6 space-y-5 lg:w-[80%]">
 						<h5 className={`${courage.className} text-lg`}>Nuestro servicio</h5>
 						<p>
-							<b className="bg-orange-600 px-1">
+							<b className="bg-orange-600">
 								Nargui CBA te ofrece el mejor servicio personalizado de catering
 								de narguilas
 							</b>{" "}
@@ -51,8 +52,8 @@ const EventosPage = () => {
 
 						<a
 							href="https://wa.link/uvtlgm"
-							className="inline-flex	w-full h-16 text-center items-center justify-center rounded-md border border-slate-800 bg-gradient-to-r from-red-500 via-orange-600 to-orange-400 px-6 font-bold text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-							Quiero contratar a Nargui CBA para mi evento
+							className="neon-button w-full lg:max-w-[90%_!important] mt-14 hover:opacity-100">
+							<span>Quiero contratar a Nargui CBA para mi evento</span>
 						</a>
 					</div>
 					<motion.div className="mx-auto col-span-12 xl:col-span-6 relative py-10">
@@ -147,7 +148,19 @@ const EventosPage = () => {
 
 			<div className="h-[70vh] lg:h-[80vh] my-10 w-[90vw] mx-auto md:px-0">
 				{/* sm:h-64 xl:h-80 2xl:h-96  */}
-				<Carousel pauseOnHover indicators={false}>
+				<Carousel
+					pauseOnHover
+					indicators={false}
+					leftControl={
+						<button className="absolute top-1/2 left-0 -translate-y-1/2">
+							<ArrowLeft size={40} />
+						</button>
+					}
+					rightControl={
+						<button className="absolute top-1/2 right-0 -translate-y-1/2">
+							<ArrowRight size={40} />
+						</button>
+					}>
 					{Array.from({ length: 15 }).map((_, i) => (
 						<img
 							key={i}

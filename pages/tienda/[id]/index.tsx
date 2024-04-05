@@ -34,7 +34,7 @@ const ProductDetailPage = () => {
 
 	return (
 		<DefaultLayout>
-			<div className="md:w-[60vw] mx-auto px-8 grid grid-cols-12 place-content-center">
+			<div className="md:w-[60vw] px-8 grid grid-cols-12 place-content-center">
 				{product ? (
 					<ProductDetail product={product} />
 				) : (
@@ -47,7 +47,7 @@ const ProductDetailPage = () => {
 				<InfiniteHero />
 				<h2
 					className={`${courage.className} text-xl font-bold text-center my-4`}>
-					PRODUCTOS RELACIONADOS
+					PRODUCTOS SUGERIDOS
 				</h2>
 				{relatedProducts && <ProductList products={relatedProducts} />}
 			</div>
