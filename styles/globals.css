@@ -118,6 +118,8 @@ a:hover {
 	width: 100%;
 	height: 100%;
 	transition: 300ms;
+	text-wrap: wrap;
+	line-height: 25px;
 }
 
 .neon-button:hover span {
