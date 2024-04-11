@@ -1,3 +1,4 @@
+import { LOGO_URL } from "@/constants"
 import { useCartContext } from "@/context/CartContext"
 import DefaultLayout from "@/layouts/default"
 import { createOrder } from "@/service/products"
@@ -139,6 +140,11 @@ const CheckoutPage = () => {
 				icon: "error",
 				title: "Llene todos los campos!",
 				text: "Al parecer hay campos vacíos, por favor revisar.",
+				background: "#32134b",
+				color: "white",
+				confirmButtonText: "Volver a intentar",
+				confirmButtonColor: "purple",
+				iconHtml: `<img src=${LOGO_URL} />`,
 			})
 			return
 		}
@@ -153,6 +159,11 @@ const CheckoutPage = () => {
 				icon: "error",
 				title: "No hay productos en el carrito!",
 				text: "Por favor, agregue productos antes de realizar el checkout.",
+				background: "#32134b",
+				color: "white",
+				confirmButtonText: "Ir a tienda",
+				confirmButtonColor: "purple",
+				iconHtml: `<img src=${LOGO_URL} />`,
 			})
 			return
 		}

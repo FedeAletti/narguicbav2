@@ -53,7 +53,9 @@ const EventosPage = () => {
 						<a
 							href="https://wa.link/uvtlgm"
 							className="neon-button w-full lg:max-w-[90%_!important] mt-14 hover:opacity-100">
-							<span>Quiero contratar a Nargui CBA para mi evento</span>
+							<span className="text-wrap">
+								Quiero contratar a Nargui CBA para mi evento
+							</span>
 						</a>
 					</div>
 					<motion.div className="mx-auto col-span-12 xl:col-span-6 relative py-10">

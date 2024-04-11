@@ -21,10 +21,17 @@ export default function IndexPage() {
 					<InfiniteHero />
 				</div>
 			</div>
-			<section className="w-screen py-10">
-				<h2 className="text-3xl text-center mx-auto font-bold">
-					Brindando buenos humos desde 2017
-				</h2>
+			<section className="w-screen">
+				<div>
+					<h2
+						className={`${courage.className} max-w-sm relative text-3xl text-center border-t border-b border-white uppercase mx-auto font-bold py-4`}>
+						Buenos humos{" "}
+						<span
+							className={`${manrope.className} absolute font-semibold -bottom-2 bg-primary px-5 left-1/2 -translate-x-1/2 text-sm`}>
+							since 2017
+						</span>
+					</h2>
+				</div>
 				<div className="max-w-[98vw] md:max-w-[80vw]  mx-auto">
 					<CTAGallery />
 				</div>
@@ -64,10 +71,34 @@ export default function IndexPage() {
 			</section>
 			<section className="w-screen py-10">
 				<div className="container mx-auto space-y-5">
-					<h2 className={`${courage.className} text-3xl text-center`}>
-						Nuestro local 🤑
+					<h2 className={`${courage.className} text-3xl text-center pb-8`}>
+						Nuestro Espacio en Córdoba Capital
 					</h2>
-					<MapsIframe height={500} />
+					<div className="grid grid-cols-12 gap-5 px-5">
+						<div className="col-span-12 lg:col-span-6 space-y-5 text-justify">
+							<p>
+								¡Bienvenidos a nuestro local en Córdoba Capital! Si te apasionan
+								las narguilas, te invitamos a descubrir un rincón único donde
+								podrás disfrutar de una amplia selección de sabores, relajarte
+								con amigos y sumergirte en la cultura del narguile. <br />
+							</p>
+							<p>
+								Vení a conocer nuestro local, donde la buena compañía y las
+								aromáticas esencias se fusionan para crear momentos
+								inolvidables. ¡Te esperamos con los brazos abiertos!
+							</p>
+							<a
+								href="https://maps.app.goo.gl/Q6QzjZaPPdaTut1XA"
+								target="_blank"
+								className="font-bold block border border-white p-3 rounded-lg text-white hover:underline underline-offset-2">
+								Rafael Nuñez 4684 | Local 3 <br /> | Barrio Cerro de las Rosas,
+								Zona Norte.
+							</a>
+						</div>
+						<div className="col-span-12 lg:col-span-6">
+							<MapsIframe height={500} />
+						</div>{" "}
+					</div>
 				</div>
 			</section>
 		</DefaultLayout>

@@ -10,11 +10,14 @@ const NosotrosPage = () => {
 			<article className="mx-auto w-[90%]">
 				<div className="px-5 mt-10">
 					<h2 className={`${courage.className} text-3xl my-8`}>
-						Sobre nosotros
+						Bienvenidos a Nuestro Mundo
 					</h2>
 					<p className="w-[90%] text-xl">
-						¡Bienvenidos al maravilloso mundo de las narguilas!{" "}
-						{/* VER SI SE PUEDE ANIMAR */}
+						En esta sección, te invitamos a sumergirte en nuestro universo. Aquí
+						encontrarás nuestra misión, visión, objetivos y nuestra historia,
+						todo tejido alrededor de un sueño compartido. ¿Estás listo para
+						conocer más sobre quiénes somos y hacia dónde nos dirigimos?
+						¡Acompáñanos en este viaje!
 					</p>
 					<div className="my-8 flex flex-col lg:flex-row gap-3">
 						<InformativeCard
@@ -40,7 +43,7 @@ const NosotrosPage = () => {
 					</div>
 				</div>
 			</article>
-			<hr className="max-w-[50%] mx-auto my-10" />
+
 			<section className="min-h-screen py-5 space-y-5 px-3 mx-auto w-[90%]">
 				<TimelineApp />
 			</section>

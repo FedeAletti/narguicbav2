@@ -55,7 +55,7 @@ export const InformativeCard = ({
 			onBlur={handleBlur}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			className="relative flex flex-col gap-5 justify-center overflow-hidden rounded-xl border border-slate-800 bg-gradient-to-r from-black to-slate-950 px-8 py-16 shadow-2xl">
+			className="relative flex flex-col gap-5 justify-center overflow-hidden rounded-xl border border-white bg-gradient-to-r from-black to-slate-950 px-8 py-16 shadow-2xl">
 			<div
 				className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
 				style={{
@@ -64,6 +64,7 @@ export const InformativeCard = ({
 				}}
 			/>
 			<h5 className={`${courage.className} text-lg`}>{title}</h5>
+			<hr className="max-w-[30%]" />
 			<p className="text-base text-slate-200">{text}</p>
 		</div>
 	)

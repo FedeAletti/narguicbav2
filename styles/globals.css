@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Works on Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #9567c4 transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #9567c4;
+	border-radius: 20px;
+	border: 3px solid transparent;
+}
+
 .title {
 	@apply font-title text-5xl font-bold;
 }

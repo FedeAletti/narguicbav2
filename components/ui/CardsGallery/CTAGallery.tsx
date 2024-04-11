@@ -14,7 +14,8 @@ import { ExternalLinkIcon } from "@/components/icons"
 
 export function CTAGallery() {
 	return (
-		<ul className={`${styles.cards} group`}>
+		<ul
+			className={`grid gap-16 my-8 mx-[5vw] grid-cols-[repeat(auto-fit,_minmax(260px,_1fr))] p-0 group`}>
 			<Link href={"/tienda"} className={`${styles.card} group`}>
 				<Image
 					src="https://i.ibb.co/vLmpJrn/accesories.jpg"
@@ -83,7 +84,7 @@ export function CTAGallery() {
 					</p>
 				</div>
 			</Link>
-			<Link href={"/blog"} className={`${styles.card} group`}>
+			<Link href={"/blog"} className={`${styles.card} flex-1 group`}>
 				<Image
 					src="https://i.ibb.co/sp7fMW7/community.png"
 					className={`${styles.card__image} z-0 hover:scale-125`}

@@ -4,16 +4,18 @@ import { Accordion, AccordionItem } from "@nextui-org/react"
 import { Button, Timeline } from "flowbite-react"
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi"
 
+const Icon = () => <HiCalendar className="fill-white" />
+
 export function TimelineApp() {
 	return (
 		<Timeline>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2024</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2024</Timeline.Time>
 					<Timeline.Title>¡Se acercan tiempos emocionantes!</Timeline.Title>
 					<Timeline.Body>
-						<p className="text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-red-200 px-4 py-5 rounded-lg mt-4">
+						<p className="text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
 							¡Se acercan tiempos emocionantes y todo esto sería imposible sin
 							ustedes! <br />
 							Desde el principio, hemos contado con su apoyo incondicional, es
@@ -30,9 +32,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2023</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2023</Timeline.Time>
 					<Timeline.Title>
 						Un año de crecimiento, diversificación y gratitud
 					</Timeline.Title>
@@ -97,9 +99,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2022</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2022</Timeline.Time>
 					<Timeline.Title>Patrocinio, exclusividad y conexión </Timeline.Title>
 					<Timeline.Body>
 						<article className="space-y-4 text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
@@ -141,9 +143,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2021</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2021</Timeline.Time>
 					<Timeline.Title>Innovación, expansión y comunidad</Timeline.Title>
 					<Timeline.Body>
 						<article className="space-y-4 text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
@@ -183,9 +185,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2020</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2020</Timeline.Time>
 					<Timeline.Title>
 						Inicio Prometedor y Desafío Inesperado
 					</Timeline.Title>
@@ -226,9 +228,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2019</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2019</Timeline.Time>
 					<Timeline.Title>Lanzamiento de Nuevos Productos</Timeline.Title>
 					<Timeline.Body>
 						<article className="space-y-4 text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
@@ -255,9 +257,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2018</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2018</Timeline.Time>
 					<Timeline.Title>Difusión, degustación y feedback</Timeline.Title>
 					<Timeline.Body>
 						<article className="space-y-4 text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
@@ -284,9 +286,9 @@ export function TimelineApp() {
 				</Timeline.Content>
 			</Timeline.Item>
 			<Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
-					<Timeline.Time>2017</Timeline.Time>
+					<Timeline.Time className="text-white font-bold">2017</Timeline.Time>
 					<Timeline.Title>Pasión, emprendimiento y sueños</Timeline.Title>
 					<Timeline.Body>
 						<article className="space-y-4 text-pretty transition-all duration-200 text-black/50 hover:text-black/70 bg-white px-4 py-5 rounded-lg mt-4">
@@ -319,7 +321,7 @@ export function TimelineApp() {
 			</Timeline.Item>
 
 			{/* <Timeline.Item>
-				<Timeline.Point icon={HiCalendar} />
+				<Timeline.Point icon={Icon} />
 				<Timeline.Content>
 					<Timeline.Time>2022</Timeline.Time>
 					<Timeline.Title>Comenzamos a participar de eventos</Timeline.Title>

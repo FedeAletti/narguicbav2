@@ -30,8 +30,11 @@ const TiendaPage = () => {
 		<DefaultLayout>
 			{productsToRender && (
 				<>
-					<section className="my-10 flex flex-wrap items-center justify-center px-5">
-						<a href="#productos" onClick={() => handleFilter("promociones")}>
+					<section className="my-10 grid grid-cols-12 place-content-center">
+						<a
+							href="#productos"
+							className="col-span-12 md:col-span-6 lg:col-span-3"
+							onClick={() => handleFilter("promociones")}>
 							<ProductCategory
 								title="PROMOCIONES"
 								subtitle="Mirá los productos en promo 🔥"
@@ -39,21 +42,30 @@ const TiendaPage = () => {
 								background="bg-gradient-to-l from-orange-600 to-red-400"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter("narguilas")}>
+						<a
+							href="#productos"
+							className="col-span-12 md:col-span-6 lg:col-span-3"
+							onClick={() => handleFilter("narguilas")}>
 							<ProductCategory
 								title="Narguilas"
 								subtitle="Concé nuestro catálogo"
 								thumbnail="/productos/oferta/narguis-category.png"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter("tabacos")}>
+						<a
+							href="#productos"
+							className="col-span-12 md:col-span-6 lg:col-span-3"
+							onClick={() => handleFilter("tabacos")}>
 							<ProductCategory
 								title="Tabacos"
 								subtitle="Mejor variedad del país"
 								thumbnail="/productos/oferta/tabacos-category.png"
 							/>
 						</a>
-						<a href="#productos" onClick={() => handleFilter("accesorios")}>
+						<a
+							href="#productos"
+							className="col-span-12 md:col-span-6 lg:col-span-3"
+							onClick={() => handleFilter("accesorios")}>
 							<ProductCategory
 								title="Accesorios"
 								subtitle="Todo lo que necesitas"
