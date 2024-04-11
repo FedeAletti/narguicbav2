@@ -49,8 +49,8 @@ export const CartTicket = ({
 				</p>
 			</div>
 
-			<div className="self-end mt-auto flex-1 h-[20vh]">
-				<div className="flex flex-col md:flex-row flex-wrap justify-center gap-5">
+			<div className="mt-auto h-[20vh]">
+				<div className="flex max-w-xl flex-col items-center md:flex-row flex-wrap justify-center gap-5">
 					<Button
 						className="text-md  font-bold text-white border-b-1 border-b-jaguar-600"
 						variant="light"
